@@ -38,7 +38,7 @@ jobs:
         run: |
           npm ci
           npm run build:course
-          npm run build -w @silver-tongue/world3d
+          WORLD3D_AUDIO=bundle npm run build -w @silver-tongue/world3d
 
       - name: Brand as Make It in China
         working-directory: silver-tongue/packages/world3d/dist

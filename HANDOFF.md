@@ -16,7 +16,7 @@ Last updated 2026-09-26. Read this first; everything else is detail.
 
 ## Rebase state (what matches what)
 - `world3d` is rebased on silver-tongue **0.11.1** (`4b31e4d`) with no conflicts: covers all 13 places/NPCs of 0.11 (Station Road, shop, tea house, stairs), errands, shop prices.
-- Rebase onto **0.12.2** (`02704f7`, adds edge-tts audio clips, `setSound` input, `soundSet` event, `audio: string[]` on lines/words, `reactionAudio`) is **in progress**. Until it lands: 3D has no spoken audio and the parity test fails on `setSound`/`soundSet` by design.
+- `world3d` is now rebased on silver-tongue **0.12.2** (`02704f7`), no conflicts: spoken lines, words, reactions in each NPC's voice, slow replay, sound toggle (`setSound`/`soundSet`), all mirrored from the TUI. 446 tests. Standalone deploy bundles the 870 clips (7 MB, loaded lazily by URL); inside the silver-tongue Pages site it reuses the TUI's `/audio/`.
 - A parity test (`packages/world3d/test/parity.test.ts`) reads the `Input`/`GameEvent` unions from `core/src/types.ts`; any new variant on Jamil's side fails world3d's typecheck/tests until handled. That is the contract.
 
 ## Done (verified in browser, desktop + phone emulation)
@@ -24,10 +24,9 @@ Last updated 2026-09-26. Read this first; everything else is detail.
 - Errands (carry parcel, deliver), shop purchases with cost shown.
 - Faceless characters with a shared rig: idle / walk / talk / carry clips; NPCs face you; held props.
 - Phone: joystick, tap-to-walk, action button, portrait + landscape, no zoom/scroll, ~200 draw calls.
-- 374 tests (263 upstream + 111 world3d), typecheck clean, build ≈ 10 MB.
+- 446 tests, typecheck clean, build ≈ 10 MB + 7 MB of audio clips.
 
 ## Not done / known gaps
-- Audio in 3D (pending the 0.12.2 rebase).
 - Walk/idle clips are procedural sine motion. Next quality step: retarget a CC0 mocap library (Quaternius UAL) onto the skeleton; bone names are Mixamo-compatible for this.
 - No sit clip: a customer stands on a stool in the noodle shop.
 - Cook's `npc_stand` is behind the counter; the street camera can't see him. One number in `assets/buildings/manifest.json`.
@@ -45,7 +44,7 @@ npm test && npm run typecheck && npm run build -w @silver-tongue/world3d
 Debug hooks in the browser console: `world3d.state()`, `.talk("wang")`, `.enter("shop")`, `.teleport(x,z)`, `.anim()`, `.errand()`, `.info()`.
 
 ## Next steps, in order
-1. Land the 0.12.2 rebase; push `world3d`; open the PR to `Bannerless-Studio/silver-tongue` (needs a fork of the org repo or write access).
+1. Open the PR from `Fiazul/silver-tongue@world3d` to `Bannerless-Studio/silver-tongue` (needs a fork of the org repo or write access).
 2. Point `deploy-game.yml` at the org repo once merged.
 3. Mocap retarget for walk/idle; sit clip.
 4. Move the cook's stand point; add a tea house scene on the content side.
