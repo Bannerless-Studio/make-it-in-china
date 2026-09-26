@@ -1,0 +1,1366 @@
+[
+ {
+  "name": "player",
+  "kind": "human",
+  "file": "player.glb",
+  "tris": 1950,
+  "size_m": [
+   0.619,
+   1.713,
+   0.442
+  ],
+  "origin": "feet",
+  "anchors": {
+   "head_top": [
+    0.0,
+    1.7,
+    0.0
+   ],
+   "top": [
+    0.0,
+    1.7132,
+    0.0
+   ]
+  },
+  "rig": {
+   "skeleton": "st-human-v1",
+   "clips": [
+    "idle",
+    "walk",
+    "talk",
+    "carry_idle",
+    "carry_walk"
+   ],
+   "clip_durations_s": {
+    "idle": 4.0,
+    "walk": 1.0,
+    "talk": 2.0,
+    "carry_idle": 4.0,
+    "carry_walk": 1.0
+   },
+   "loop": {
+    "idle": true,
+    "walk": true,
+    "talk": true,
+    "carry_idle": true,
+    "carry_walk": true
+   },
+   "fps": 24,
+   "stride_m": 0.6,
+   "step_m": 0.3,
+   "walk_cycle_s": 1.0,
+   "walk_speed_mps": 0.6,
+   "grip_bones": [
+    "RightHandGrip",
+    "LeftHandGrip"
+   ],
+   "head_top_bone": "HeadTop",
+   "attach_frame": "bone local +Y = world up and +Z = character front in the rest pose (glTF node axes)",
+   "rest_arm_deg": {
+    "Left": 15.0,
+    "Right": 15.0
+   },
+   "shoulder_out_m": {
+    "Left": 0.0,
+    "Right": 0.0
+   }
+  },
+  "frame": "gltf"
+ },
+ {
+  "name": "cook",
+  "kind": "human",
+  "file": "cook.glb",
+  "tris": 2386,
+  "size_m": [
+   0.834,
+   1.942,
+   0.558
+  ],
+  "origin": "feet",
+  "anchors": {
+   "head_top": [
+    0.0,
+    1.7,
+    0.0
+   ],
+   "top": [
+    0.0,
+    1.942,
+    0.0
+   ]
+  },
+  "rig": {
+   "skeleton": "st-human-v1",
+   "clips": [
+    "idle",
+    "walk",
+    "talk",
+    "carry_idle",
+    "carry_walk"
+   ],
+   "clip_durations_s": {
+    "idle": 4.0,
+    "walk": 1.0,
+    "talk": 2.0,
+    "carry_idle": 4.0,
+    "carry_walk": 1.0
+   },
+   "loop": {
+    "idle": true,
+    "walk": true,
+    "talk": true,
+    "carry_idle": true,
+    "carry_walk": true
+   },
+   "fps": 24,
+   "stride_m": 0.6,
+   "step_m": 0.3,
+   "walk_cycle_s": 1.0,
+   "walk_speed_mps": 0.6,
+   "grip_bones": [
+    "RightHandGrip",
+    "LeftHandGrip"
+   ],
+   "head_top_bone": "HeadTop",
+   "attach_frame": "bone local +Y = world up and +Z = character front in the rest pose (glTF node axes)",
+   "rest_arm_deg": {
+    "Left": 15.0,
+    "Right": 15.0
+   },
+   "shoulder_out_m": {
+    "Left": 0.085,
+    "Right": 0.085
+   }
+  },
+  "frame": "gltf"
+ },
+ {
+  "name": "old_wang",
+  "kind": "human",
+  "file": "old_wang.glb",
+  "tris": 1990,
+  "size_m": [
+   0.591,
+   1.61,
+   0.598
+  ],
+  "origin": "feet",
+  "anchors": {
+   "head_top": [
+    0.0,
+    1.6,
+    0.0
+   ],
+   "top": [
+    0.0,
+    1.6104,
+    0.0
+   ]
+  },
+  "rig": {
+   "skeleton": "st-human-v1",
+   "clips": [
+    "idle",
+    "walk",
+    "talk",
+    "carry_idle",
+    "carry_walk"
+   ],
+   "clip_durations_s": {
+    "idle": 4.0,
+    "walk": 1.0,
+    "talk": 2.0,
+    "carry_idle": 4.0,
+    "carry_walk": 1.0
+   },
+   "loop": {
+    "idle": true,
+    "walk": true,
+    "talk": true,
+    "carry_idle": true,
+    "carry_walk": true
+   },
+   "fps": 24,
+   "stride_m": 0.5647,
+   "step_m": 0.2824,
+   "walk_cycle_s": 1.0,
+   "walk_speed_mps": 0.5647,
+   "grip_bones": [
+    "RightHandGrip",
+    "LeftHandGrip"
+   ],
+   "head_top_bone": "HeadTop",
+   "attach_frame": "bone local +Y = world up and +Z = character front in the rest pose (glTF node axes)",
+   "rest_arm_deg": {
+    "Left": 15.0,
+    "Right": 15.0
+   },
+   "shoulder_out_m": {
+    "Left": 0.019,
+    "Right": 0.019
+   }
+  },
+  "frame": "gltf"
+ },
+ {
+  "name": "landlord",
+  "kind": "human",
+  "file": "landlord.glb",
+  "tris": 1956,
+  "size_m": [
+   0.814,
+   1.624,
+   0.399
+  ],
+  "origin": "feet",
+  "anchors": {
+   "head_top": [
+    0.0,
+    1.62,
+    0.0
+   ],
+   "top": [
+    0.0,
+    1.6242,
+    0.0
+   ]
+  },
+  "rig": {
+   "skeleton": "st-human-v1",
+   "clips": [
+    "idle",
+    "walk",
+    "talk",
+    "carry_idle",
+    "carry_walk"
+   ],
+   "clip_durations_s": {
+    "idle": 4.0,
+    "walk": 1.0,
+    "talk": 2.0,
+    "carry_idle": 4.0,
+    "carry_walk": 1.0
+   },
+   "loop": {
+    "idle": true,
+    "walk": true,
+    "talk": true,
+    "carry_idle": true,
+    "carry_walk": true
+   },
+   "fps": 24,
+   "stride_m": 0.5718,
+   "step_m": 0.2859,
+   "walk_cycle_s": 1.0,
+   "walk_speed_mps": 0.5718,
+   "grip_bones": [
+    "RightHandGrip",
+    "LeftHandGrip"
+   ],
+   "head_top_bone": "HeadTop",
+   "attach_frame": "bone local +Y = world up and +Z = character front in the rest pose (glTF node axes)",
+   "rest_arm_deg": {
+    "Left": 15.0,
+    "Right": 15.0
+   },
+   "shoulder_out_m": {
+    "Left": 0.091,
+    "Right": 0.091
+   }
+  },
+  "frame": "gltf"
+ },
+ {
+  "name": "warehouse_boss",
+  "kind": "human",
+  "file": "warehouse_boss.glb",
+  "tris": 2128,
+  "size_m": [
+   0.908,
+   1.763,
+   0.616
+  ],
+  "origin": "feet",
+  "anchors": {
+   "head_top": [
+    0.0,
+    1.7,
+    0.0
+   ],
+   "top": [
+    0.0,
+    1.7627,
+    0.0
+   ]
+  },
+  "rig": {
+   "skeleton": "st-human-v1",
+   "clips": [
+    "idle",
+    "walk",
+    "talk",
+    "carry_idle",
+    "carry_walk"
+   ],
+   "clip_durations_s": {
+    "idle": 4.0,
+    "walk": 1.0,
+    "talk": 2.0,
+    "carry_idle": 4.0,
+    "carry_walk": 1.0
+   },
+   "loop": {
+    "idle": true,
+    "walk": true,
+    "talk": true,
+    "carry_idle": true,
+    "carry_walk": true
+   },
+   "fps": 24,
+   "stride_m": 0.6,
+   "step_m": 0.3,
+   "walk_cycle_s": 1.0,
+   "walk_speed_mps": 0.6,
+   "grip_bones": [
+    "RightHandGrip",
+    "LeftHandGrip"
+   ],
+   "head_top_bone": "HeadTop",
+   "attach_frame": "bone local +Y = world up and +Z = character front in the rest pose (glTF node axes)",
+   "rest_arm_deg": {
+    "Left": 15.0,
+    "Right": 15.0
+   },
+   "shoulder_out_m": {
+    "Left": 0.085,
+    "Right": 0.085
+   }
+  },
+  "frame": "gltf"
+ },
+ {
+  "name": "courier",
+  "kind": "human",
+  "file": "courier.glb",
+  "tris": 1828,
+  "size_m": [
+   0.58,
+   1.739,
+   0.568
+  ],
+  "origin": "feet",
+  "anchors": {
+   "head_top": [
+    0.0,
+    1.7,
+    0.0
+   ],
+   "top": [
+    0.0,
+    1.7391,
+    0.0
+   ]
+  },
+  "rig": {
+   "skeleton": "st-human-v1",
+   "clips": [
+    "idle",
+    "walk",
+    "talk",
+    "carry_idle",
+    "carry_walk"
+   ],
+   "clip_durations_s": {
+    "idle": 4.0,
+    "walk": 1.0,
+    "talk": 2.0,
+    "carry_idle": 4.0,
+    "carry_walk": 1.0
+   },
+   "loop": {
+    "idle": true,
+    "walk": true,
+    "talk": true,
+    "carry_idle": true,
+    "carry_walk": true
+   },
+   "fps": 24,
+   "stride_m": 0.6,
+   "step_m": 0.3,
+   "walk_cycle_s": 1.0,
+   "walk_speed_mps": 0.6,
+   "grip_bones": [
+    "RightHandGrip",
+    "LeftHandGrip"
+   ],
+   "head_top_bone": "HeadTop",
+   "attach_frame": "bone local +Y = world up and +Z = character front in the rest pose (glTF node axes)",
+   "rest_arm_deg": {
+    "Left": 15.0,
+    "Right": 15.0
+   },
+   "shoulder_out_m": {
+    "Left": 0.0,
+    "Right": 0.0
+   }
+  },
+  "frame": "gltf"
+ },
+ {
+  "name": "fruit_seller",
+  "kind": "human",
+  "file": "fruit_seller.glb",
+  "tris": 2422,
+  "size_m": [
+   1.001,
+   1.739,
+   0.952
+  ],
+  "origin": "feet",
+  "anchors": {
+   "head_top": [
+    0.0,
+    1.7,
+    0.0
+   ],
+   "top": [
+    0.0,
+    1.7394,
+    0.0
+   ]
+  },
+  "rig": {
+   "skeleton": "st-human-v1",
+   "clips": [
+    "idle",
+    "walk",
+    "talk",
+    "carry_idle",
+    "carry_walk"
+   ],
+   "clip_durations_s": {
+    "idle": 4.0,
+    "walk": 1.0,
+    "talk": 2.0,
+    "carry_idle": 4.0,
+    "carry_walk": 1.0
+   },
+   "loop": {
+    "idle": true,
+    "walk": true,
+    "talk": true,
+    "carry_idle": true,
+    "carry_walk": true
+   },
+   "fps": 24,
+   "stride_m": 0.6,
+   "step_m": 0.3,
+   "walk_cycle_s": 1.0,
+   "walk_speed_mps": 0.6,
+   "grip_bones": [
+    "RightHandGrip",
+    "LeftHandGrip"
+   ],
+   "head_top_bone": "HeadTop",
+   "attach_frame": "bone local +Y = world up and +Z = character front in the rest pose (glTF node axes)",
+   "rest_arm_deg": {
+    "Left": 18.0,
+    "Right": 18.0
+   },
+   "shoulder_out_m": {
+    "Left": 0.1,
+    "Right": 0.1
+   }
+  },
+  "frame": "gltf"
+ },
+ {
+  "name": "clerk",
+  "kind": "human",
+  "file": "clerk.glb",
+  "tris": 1658,
+  "size_m": [
+   0.719,
+   1.715,
+   0.427
+  ],
+  "origin": "feet",
+  "anchors": {
+   "head_top": [
+    0.0,
+    1.7,
+    0.0
+   ],
+   "top": [
+    0.0,
+    1.7154,
+    0.0
+   ]
+  },
+  "rig": {
+   "skeleton": "st-human-v1",
+   "clips": [
+    "idle",
+    "walk",
+    "talk",
+    "carry_idle",
+    "carry_walk"
+   ],
+   "clip_durations_s": {
+    "idle": 4.0,
+    "walk": 1.0,
+    "talk": 2.0,
+    "carry_idle": 4.0,
+    "carry_walk": 1.0
+   },
+   "loop": {
+    "idle": true,
+    "walk": true,
+    "talk": true,
+    "carry_idle": true,
+    "carry_walk": true
+   },
+   "fps": 24,
+   "stride_m": 0.6,
+   "step_m": 0.3,
+   "walk_cycle_s": 1.0,
+   "walk_speed_mps": 0.6,
+   "grip_bones": [
+    "RightHandGrip",
+    "LeftHandGrip"
+   ],
+   "head_top_bone": "HeadTop",
+   "attach_frame": "bone local +Y = world up and +Z = character front in the rest pose (glTF node axes)",
+   "rest_arm_deg": {
+    "Left": 15.0,
+    "Right": 15.0
+   },
+   "shoulder_out_m": {
+    "Left": 0.05,
+    "Right": 0.05
+   }
+  },
+  "frame": "gltf"
+ },
+ {
+  "name": "customer_a",
+  "kind": "human",
+  "file": "customer_a.glb",
+  "tris": 1600,
+  "size_m": [
+   0.65,
+   1.713,
+   0.417
+  ],
+  "origin": "feet",
+  "anchors": {
+   "head_top": [
+    0.0,
+    1.7,
+    0.0
+   ],
+   "top": [
+    0.0,
+    1.7132,
+    0.0
+   ]
+  },
+  "rig": {
+   "skeleton": "st-human-v1",
+   "clips": [
+    "idle",
+    "walk",
+    "talk",
+    "carry_idle",
+    "carry_walk"
+   ],
+   "clip_durations_s": {
+    "idle": 4.0,
+    "walk": 1.0,
+    "talk": 2.0,
+    "carry_idle": 4.0,
+    "carry_walk": 1.0
+   },
+   "loop": {
+    "idle": true,
+    "walk": true,
+    "talk": true,
+    "carry_idle": true,
+    "carry_walk": true
+   },
+   "fps": 24,
+   "stride_m": 0.6,
+   "step_m": 0.3,
+   "walk_cycle_s": 1.0,
+   "walk_speed_mps": 0.6,
+   "grip_bones": [
+    "RightHandGrip",
+    "LeftHandGrip"
+   ],
+   "head_top_bone": "HeadTop",
+   "attach_frame": "bone local +Y = world up and +Z = character front in the rest pose (glTF node axes)",
+   "rest_arm_deg": {
+    "Left": 15.0,
+    "Right": 15.0
+   },
+   "shoulder_out_m": {
+    "Left": 0.035,
+    "Right": 0.035
+   }
+  },
+  "frame": "gltf"
+ },
+ {
+  "name": "customer_b",
+  "kind": "human",
+  "file": "customer_b.glb",
+  "tris": 1942,
+  "size_m": [
+   1.0,
+   1.731,
+   0.632
+  ],
+  "origin": "feet",
+  "anchors": {
+   "head_top": [
+    0.0,
+    1.7,
+    0.0
+   ],
+   "top": [
+    0.0,
+    1.7308,
+    0.0
+   ]
+  },
+  "rig": {
+   "skeleton": "st-human-v1",
+   "clips": [
+    "idle",
+    "walk",
+    "talk",
+    "carry_idle",
+    "carry_walk"
+   ],
+   "clip_durations_s": {
+    "idle": 4.0,
+    "walk": 1.0,
+    "talk": 2.0,
+    "carry_idle": 4.0,
+    "carry_walk": 1.0
+   },
+   "loop": {
+    "idle": true,
+    "walk": true,
+    "talk": true,
+    "carry_idle": true,
+    "carry_walk": true
+   },
+   "fps": 24,
+   "stride_m": 0.6,
+   "step_m": 0.3,
+   "walk_cycle_s": 1.0,
+   "walk_speed_mps": 0.6,
+   "grip_bones": [
+    "RightHandGrip",
+    "LeftHandGrip"
+   ],
+   "head_top_bone": "HeadTop",
+   "attach_frame": "bone local +Y = world up and +Z = character front in the rest pose (glTF node axes)",
+   "rest_arm_deg": {
+    "Left": 25.0,
+    "Right": 25.0
+   },
+   "shoulder_out_m": {
+    "Left": 0.1,
+    "Right": 0.1
+   }
+  },
+  "frame": "gltf"
+ },
+ {
+  "name": "kid",
+  "kind": "human",
+  "file": "kid.glb",
+  "tris": 2488,
+  "size_m": [
+   0.503,
+   1.125,
+   0.508
+  ],
+  "origin": "feet",
+  "anchors": {
+   "head_top": [
+    0.0,
+    1.1,
+    0.0
+   ],
+   "top": [
+    0.0,
+    1.1249,
+    0.0
+   ]
+  },
+  "rig": {
+   "skeleton": "st-human-v1",
+   "clips": [
+    "idle",
+    "walk",
+    "talk",
+    "carry_idle",
+    "carry_walk"
+   ],
+   "clip_durations_s": {
+    "idle": 4.0,
+    "walk": 1.0,
+    "talk": 2.0,
+    "carry_idle": 4.0,
+    "carry_walk": 1.0
+   },
+   "loop": {
+    "idle": true,
+    "walk": true,
+    "talk": true,
+    "carry_idle": true,
+    "carry_walk": true
+   },
+   "fps": 24,
+   "stride_m": 0.3882,
+   "step_m": 0.1941,
+   "walk_cycle_s": 1.0,
+   "walk_speed_mps": 0.3882,
+   "grip_bones": [
+    "RightHandGrip",
+    "LeftHandGrip"
+   ],
+   "head_top_bone": "HeadTop",
+   "attach_frame": "bone local +Y = world up and +Z = character front in the rest pose (glTF node axes)",
+   "rest_arm_deg": {
+    "Left": 15.0,
+    "Right": 15.0
+   },
+   "shoulder_out_m": {
+    "Left": 0.03,
+    "Right": 0.03
+   }
+  },
+  "frame": "gltf"
+ },
+ {
+  "name": "bus_driver",
+  "kind": "human",
+  "file": "bus_driver.glb",
+  "tris": 1932,
+  "size_m": [
+   0.719,
+   1.735,
+   0.554
+  ],
+  "origin": "feet",
+  "anchors": {
+   "head_top": [
+    0.0,
+    1.7,
+    0.0
+   ],
+   "top": [
+    0.0,
+    1.7349,
+    0.0
+   ]
+  },
+  "rig": {
+   "skeleton": "st-human-v1",
+   "clips": [
+    "idle",
+    "walk",
+    "talk",
+    "carry_idle",
+    "carry_walk"
+   ],
+   "clip_durations_s": {
+    "idle": 4.0,
+    "walk": 1.0,
+    "talk": 2.0,
+    "carry_idle": 4.0,
+    "carry_walk": 1.0
+   },
+   "loop": {
+    "idle": true,
+    "walk": true,
+    "talk": true,
+    "carry_idle": true,
+    "carry_walk": true
+   },
+   "fps": 24,
+   "stride_m": 0.6,
+   "step_m": 0.3,
+   "walk_cycle_s": 1.0,
+   "walk_speed_mps": 0.6,
+   "grip_bones": [
+    "RightHandGrip",
+    "LeftHandGrip"
+   ],
+   "head_top_bone": "HeadTop",
+   "attach_frame": "bone local +Y = world up and +Z = character front in the rest pose (glTF node axes)",
+   "rest_arm_deg": {
+    "Left": 15.0,
+    "Right": 15.0
+   },
+   "shoulder_out_m": {
+    "Left": 0.05,
+    "Right": 0.05
+   }
+  },
+  "frame": "gltf"
+ },
+ {
+  "name": "customer_a_khaki",
+  "kind": "recolour",
+  "file": "customer_a_khaki.glb",
+  "tris": 1600,
+  "size_m": [
+   0.65,
+   1.713,
+   0.417
+  ],
+  "origin": "feet",
+  "anchors": {
+   "head_top": [
+    0.0,
+    1.7,
+    0.0
+   ],
+   "top": [
+    0.0,
+    1.7132,
+    0.0
+   ]
+  },
+  "rig": {
+   "skeleton": "st-human-v1",
+   "clips": [
+    "idle",
+    "walk",
+    "talk",
+    "carry_idle",
+    "carry_walk"
+   ],
+   "clip_durations_s": {
+    "idle": 4.0,
+    "walk": 1.0,
+    "talk": 2.0,
+    "carry_idle": 4.0,
+    "carry_walk": 1.0
+   },
+   "loop": {
+    "idle": true,
+    "walk": true,
+    "talk": true,
+    "carry_idle": true,
+    "carry_walk": true
+   },
+   "fps": 24,
+   "stride_m": 0.6,
+   "step_m": 0.3,
+   "walk_cycle_s": 1.0,
+   "walk_speed_mps": 0.6,
+   "grip_bones": [
+    "RightHandGrip",
+    "LeftHandGrip"
+   ],
+   "head_top_bone": "HeadTop",
+   "attach_frame": "bone local +Y = world up and +Z = character front in the rest pose (glTF node axes)",
+   "rest_arm_deg": {
+    "Left": 15.0,
+    "Right": 15.0
+   },
+   "shoulder_out_m": {
+    "Left": 0.035,
+    "Right": 0.035
+   }
+  },
+  "frame": "gltf"
+ },
+ {
+  "name": "customer_a_green",
+  "kind": "recolour",
+  "file": "customer_a_green.glb",
+  "tris": 1600,
+  "size_m": [
+   0.65,
+   1.713,
+   0.417
+  ],
+  "origin": "feet",
+  "anchors": {
+   "head_top": [
+    0.0,
+    1.7,
+    0.0
+   ],
+   "top": [
+    0.0,
+    1.7132,
+    0.0
+   ]
+  },
+  "rig": {
+   "skeleton": "st-human-v1",
+   "clips": [
+    "idle",
+    "walk",
+    "talk",
+    "carry_idle",
+    "carry_walk"
+   ],
+   "clip_durations_s": {
+    "idle": 4.0,
+    "walk": 1.0,
+    "talk": 2.0,
+    "carry_idle": 4.0,
+    "carry_walk": 1.0
+   },
+   "loop": {
+    "idle": true,
+    "walk": true,
+    "talk": true,
+    "carry_idle": true,
+    "carry_walk": true
+   },
+   "fps": 24,
+   "stride_m": 0.6,
+   "step_m": 0.3,
+   "walk_cycle_s": 1.0,
+   "walk_speed_mps": 0.6,
+   "grip_bones": [
+    "RightHandGrip",
+    "LeftHandGrip"
+   ],
+   "head_top_bone": "HeadTop",
+   "attach_frame": "bone local +Y = world up and +Z = character front in the rest pose (glTF node axes)",
+   "rest_arm_deg": {
+    "Left": 15.0,
+    "Right": 15.0
+   },
+   "shoulder_out_m": {
+    "Left": 0.035,
+    "Right": 0.035
+   }
+  },
+  "frame": "gltf"
+ },
+ {
+  "name": "customer_a_blue",
+  "kind": "recolour",
+  "file": "customer_a_blue.glb",
+  "tris": 1600,
+  "size_m": [
+   0.65,
+   1.713,
+   0.417
+  ],
+  "origin": "feet",
+  "anchors": {
+   "head_top": [
+    0.0,
+    1.7,
+    0.0
+   ],
+   "top": [
+    0.0,
+    1.7132,
+    0.0
+   ]
+  },
+  "rig": {
+   "skeleton": "st-human-v1",
+   "clips": [
+    "idle",
+    "walk",
+    "talk",
+    "carry_idle",
+    "carry_walk"
+   ],
+   "clip_durations_s": {
+    "idle": 4.0,
+    "walk": 1.0,
+    "talk": 2.0,
+    "carry_idle": 4.0,
+    "carry_walk": 1.0
+   },
+   "loop": {
+    "idle": true,
+    "walk": true,
+    "talk": true,
+    "carry_idle": true,
+    "carry_walk": true
+   },
+   "fps": 24,
+   "stride_m": 0.6,
+   "step_m": 0.3,
+   "walk_cycle_s": 1.0,
+   "walk_speed_mps": 0.6,
+   "grip_bones": [
+    "RightHandGrip",
+    "LeftHandGrip"
+   ],
+   "head_top_bone": "HeadTop",
+   "attach_frame": "bone local +Y = world up and +Z = character front in the rest pose (glTF node axes)",
+   "rest_arm_deg": {
+    "Left": 15.0,
+    "Right": 15.0
+   },
+   "shoulder_out_m": {
+    "Left": 0.035,
+    "Right": 0.035
+   }
+  },
+  "frame": "gltf"
+ },
+ {
+  "name": "cat",
+  "kind": "pet",
+  "file": "cat.glb",
+  "tris": 814,
+  "size_m": [
+   0.231,
+   0.35,
+   0.25
+  ],
+  "origin": "feet",
+  "anchors": {
+   "top": [
+    0.0,
+    0.35,
+    0.0
+   ]
+  },
+  "rig": {
+   "skeleton": "st-pet-v1",
+   "clips": [
+    "idle"
+   ],
+   "clip_durations_s": {
+    "idle": 2.0
+   },
+   "loop": {
+    "idle": true
+   },
+   "fps": 24
+  },
+  "frame": "gltf"
+ },
+ {
+  "name": "dog",
+  "kind": "pet",
+  "file": "dog.glb",
+  "tris": 644,
+  "size_m": [
+   0.202,
+   0.4,
+   0.396
+  ],
+  "origin": "feet",
+  "anchors": {
+   "top": [
+    0.0,
+    0.4,
+    0.0
+   ]
+  },
+  "rig": {
+   "skeleton": "st-pet-v1",
+   "clips": [
+    "idle"
+   ],
+   "clip_durations_s": {
+    "idle": 2.0
+   },
+   "loop": {
+    "idle": true
+   },
+   "fps": 24
+  },
+  "frame": "gltf"
+ },
+ {
+  "name": "pigeon",
+  "kind": "pet",
+  "file": "pigeon.glb",
+  "tris": 524,
+  "size_m": [
+   0.156,
+   0.25,
+   0.331
+  ],
+  "origin": "feet",
+  "anchors": {
+   "top": [
+    0.0,
+    0.25,
+    0.0
+   ]
+  },
+  "rig": {
+   "skeleton": "st-pet-v1",
+   "clips": [
+    "idle"
+   ],
+   "clip_durations_s": {
+    "idle": 2.0
+   },
+   "loop": {
+    "idle": true
+   },
+   "fps": 24
+  },
+  "frame": "gltf"
+ },
+ {
+  "name": "chef_hat",
+  "kind": "prop",
+  "file": "chef_hat.glb",
+  "tris": 318,
+  "size_m": [
+   0.575,
+   0.4,
+   0.558
+  ],
+  "origin": "feet",
+  "anchors": {},
+  "used_by": [
+   "cook"
+  ],
+  "frame": "gltf"
+ },
+ {
+  "name": "ladle",
+  "kind": "prop",
+  "file": "ladle.glb",
+  "tris": 278,
+  "size_m": [
+   0.126,
+   0.485,
+   0.126
+  ],
+  "origin": "grip",
+  "anchors": {
+   "grip": [
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  "used_by": [
+   "cook"
+  ],
+  "frame": "gltf"
+ },
+ {
+  "name": "clipboard",
+  "kind": "prop",
+  "file": "clipboard.glb",
+  "tris": 148,
+  "size_m": [
+   0.23,
+   0.322,
+   0.025
+  ],
+  "origin": "grip",
+  "anchors": {
+   "grip": [
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  "used_by": [
+   "warehouse_boss"
+  ],
+  "frame": "gltf"
+ },
+ {
+  "name": "delivery_bag",
+  "kind": "prop",
+  "file": "delivery_bag.glb",
+  "tris": 252,
+  "size_m": [
+   0.39,
+   0.435,
+   0.27
+  ],
+  "origin": "grip",
+  "anchors": {
+   "grip": [
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  "used_by": [
+   "courier"
+  ],
+  "frame": "gltf"
+ },
+ {
+  "name": "hanging_scale",
+  "kind": "prop",
+  "file": "hanging_scale.glb",
+  "tris": 260,
+  "size_m": [
+   0.585,
+   0.386,
+   0.17
+  ],
+  "origin": "grip",
+  "anchors": {
+   "grip": [
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  "used_by": [
+   "fruit_seller"
+  ],
+  "frame": "gltf"
+ },
+ {
+  "name": "key_ring",
+  "kind": "prop",
+  "file": "key_ring.glb",
+  "tris": 296,
+  "size_m": [
+   0.079,
+   0.119,
+   0.007
+  ],
+  "origin": "grip",
+  "anchors": {
+   "grip": [
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  "used_by": [
+   "landlord"
+  ],
+  "frame": "gltf"
+ },
+ {
+  "name": "shopping_trolley",
+  "kind": "prop",
+  "file": "shopping_trolley.glb",
+  "tris": 360,
+  "size_m": [
+   0.42,
+   0.916,
+   0.305
+  ],
+  "origin": "grip",
+  "anchors": {
+   "grip": [
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  "used_by": [
+   "customer_b"
+  ],
+  "frame": "gltf"
+ },
+ {
+  "name": "smartphone",
+  "kind": "prop",
+  "file": "smartphone.glb",
+  "tris": 120,
+  "size_m": [
+   0.075,
+   0.15,
+   0.011
+  ],
+  "origin": "grip",
+  "anchors": {
+   "grip": [
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  "used_by": [
+   "player"
+  ],
+  "frame": "gltf"
+ },
+ {
+  "name": "folding_fan",
+  "kind": "prop",
+  "file": "folding_fan.glb",
+  "tris": 232,
+  "size_m": [
+   0.429,
+   0.242,
+   0.018
+  ],
+  "origin": "grip",
+  "anchors": {
+   "grip": [
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  "used_by": [
+   "old_wang"
+  ],
+  "frame": "gltf"
+ },
+ {
+  "name": "barcode_scanner",
+  "kind": "prop",
+  "file": "barcode_scanner.glb",
+  "tris": 316,
+  "size_m": [
+   0.085,
+   0.178,
+   0.192
+  ],
+  "origin": "grip",
+  "anchors": {
+   "grip": [
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  "used_by": [
+   "clerk"
+  ],
+  "frame": "gltf"
+ },
+ {
+  "name": "umbrella_closed",
+  "kind": "prop",
+  "file": "umbrella_closed.glb",
+  "tris": 312,
+  "size_m": [
+   0.139,
+   0.9,
+   0.095
+  ],
+  "origin": "grip",
+  "anchors": {
+   "grip": [
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  "used_by": [],
+  "frame": "gltf"
+ }
+]

@@ -1,0 +1,714 @@
+[
+ {
+  "name": "lantern",
+  "file": "lantern.glb",
+  "tris": 596,
+  "size_m": [
+   0.37,
+   0.57,
+   0.37
+  ],
+  "origin": "hang",
+  "frame": "gltf",
+  "anchors": {
+   "hook": [
+    0,
+    0,
+    0.0
+   ]
+  },
+  "mount": "origin = top of hook ring; lantern hangs straight down (-Y glTF) from a lantern_hook anchor"
+ },
+ {
+  "name": "lantern_string",
+  "file": "lantern_string.glb",
+  "tris": 1874,
+  "size_m": [
+   3.058,
+   1.026,
+   0.274
+  ],
+  "origin": "hang_left",
+  "frame": "gltf",
+  "anchors": {
+   "hook_left": [
+    0,
+    0,
+    0.0
+   ],
+   "hook_right": [
+    3.0,
+    0,
+    0.0
+   ]
+  },
+  "mount": "origin = left end hook top; right end hook at +3.0 m X; cord sags 0.35 m"
+ },
+ {
+  "name": "steamer_stack",
+  "file": "steamer_stack.glb",
+  "tris": 584,
+  "size_m": [
+   0.4,
+   0.444,
+   0.4
+  ],
+  "origin": "feet",
+  "frame": "gltf",
+  "anchors": {}
+ },
+ {
+  "name": "sign_hanging",
+  "file": "sign_hanging.glb",
+  "tris": 628,
+  "size_m": [
+   1.6,
+   0.75,
+   0.08
+  ],
+  "origin": "hang",
+  "frame": "gltf",
+  "anchors": {
+   "text_face": {
+    "pos": [
+     0,
+     -0.5,
+     0.026
+    ],
+    "size": [
+     1.5,
+     0.4
+    ],
+    "normal": [
+     0,
+     0,
+     1.0
+    ],
+    "face_colour": "paper"
+   },
+   "chain_tops": [
+    [
+     -0.6,
+     0,
+     0.0
+    ],
+    [
+     0.6,
+     0,
+     0.0
+    ]
+   ]
+  },
+  "mount": "origin = midpoint between the two chain tops (chains at x=+-0.6 m); board hangs below, face toward front"
+ },
+ {
+  "name": "sign_vertical",
+  "file": "sign_vertical.glb",
+  "tris": 280,
+  "size_m": [
+   0.12,
+   1.6,
+   0.52
+  ],
+  "origin": "wall",
+  "frame": "gltf",
+  "anchors": {
+   "text_face": {
+    "pos": [
+     0.026,
+     0,
+     0.32
+    ],
+    "size": [
+     0.31,
+     1.51
+    ],
+    "normal": [
+     1,
+     0,
+     0.0
+    ],
+    "face_colour": "lantern_red"
+   },
+   "text_face_back": {
+    "pos": [
+     -0.026,
+     0,
+     0.32
+    ],
+    "size": [
+     0.31,
+     1.51
+    ],
+    "normal": [
+     -1,
+     0,
+     0.0
+    ],
+    "face_colour": "lantern_red"
+   }
+  },
+  "mount": "origin = centre of the wall plate on the wall plane; board projects 0.12-0.52 m out from the wall (+Z glTF), faces point along +-X"
+ },
+ {
+  "name": "sign_aboard",
+  "file": "sign_aboard.glb",
+  "tris": 428,
+  "size_m": [
+   0.6,
+   0.912,
+   0.411
+  ],
+  "origin": "feet",
+  "frame": "gltf",
+  "anchors": {
+   "text_face": {
+    "pos": [
+     0.0,
+     0.4575,
+     0.1081
+    ],
+    "size": [
+     0.51,
+     0.828
+    ],
+    "normal": [
+     0.0,
+     0.1961,
+     0.9806
+    ],
+    "face_colour": "charcoal"
+   }
+  }
+ },
+ {
+  "name": "sign_lightbox",
+  "file": "sign_lightbox.glb",
+  "tris": 168,
+  "size_m": [
+   2.0,
+   0.74,
+   0.19
+  ],
+  "origin": "wall",
+  "frame": "gltf",
+  "anchors": {
+   "text_face": {
+    "pos": [
+     0,
+     0,
+     0.191
+    ],
+    "size": [
+     1.88,
+     0.48
+    ],
+    "normal": [
+     0,
+     0,
+     1.0
+    ],
+    "face_colour": "paper"
+   }
+  },
+  "mount": "origin = centre of the box back on the wall plane; box projects 0.18 m (+Z glTF)"
+ },
+ {
+  "name": "awning",
+  "file": "awning.glb",
+  "tris": 652,
+  "size_m": [
+   4.04,
+   0.96,
+   1.1
+  ],
+  "origin": "wall",
+  "frame": "gltf",
+  "anchors": {
+   "valance_face": {
+    "pos": [
+     0,
+     -0.575,
+     1.101
+    ],
+    "size": [
+     4.0,
+     0.25
+    ],
+    "normal": [
+     0,
+     0,
+     1.0
+    ],
+    "face_colour": "red"
+   }
+  },
+  "mount": "origin = top edge where awning meets the wall (wall mount line), centred X; slopes 1.10 m out (+Z glTF) and 0.45 m down, valance to 0.79 m below origin"
+ },
+ {
+  "name": "awning_small",
+  "file": "awning_small.glb",
+  "tris": 364,
+  "size_m": [
+   2.04,
+   0.96,
+   1.1
+  ],
+  "origin": "wall",
+  "frame": "gltf",
+  "anchors": {
+   "valance_face": {
+    "pos": [
+     0,
+     -0.575,
+     1.101
+    ],
+    "size": [
+     2.0,
+     0.25
+    ],
+    "normal": [
+     0,
+     0,
+     1.0
+    ],
+    "face_colour": "red"
+   }
+  },
+  "mount": "origin = top edge where awning meets the wall (wall mount line), centred X; slopes 1.10 m out (+Z glTF) and 0.45 m down, valance to 0.79 m below origin"
+ },
+ {
+  "name": "stool_plastic",
+  "file": "stool_plastic.glb",
+  "tris": 280,
+  "size_m": [
+   0.331,
+   0.452,
+   0.336
+  ],
+  "origin": "feet",
+  "frame": "gltf",
+  "anchors": {
+   "seat": [
+    0.0,
+    0.4525,
+    0.0
+   ]
+  }
+ },
+ {
+  "name": "table_folding",
+  "file": "table_folding.glb",
+  "tris": 368,
+  "size_m": [
+   1.2,
+   0.75,
+   0.6
+  ],
+  "origin": "feet",
+  "frame": "gltf",
+  "anchors": {
+   "top": {
+    "pos": [
+     0.0,
+     0.75,
+     0.0
+    ],
+    "size": [
+     1.2,
+     0.6
+    ]
+   },
+   "seats": [
+    [
+     0.0,
+     0.0,
+     0.65
+    ],
+    [
+     0.0,
+     0.0,
+     -0.65
+    ]
+   ]
+  }
+ },
+ {
+  "name": "ac_unit",
+  "file": "ac_unit.glb",
+  "tris": 560,
+  "size_m": [
+   0.875,
+   0.85,
+   0.37
+  ],
+  "origin": "wall",
+  "frame": "gltf",
+  "anchors": {},
+  "mount": "origin = wall plane at the bottom of the bracket wall plates, centred on the unit; unit sits 0.06-0.34 m in front of the wall (+Z glTF), top at 0.85 m"
+ },
+ {
+  "name": "power_pole",
+  "file": "power_pole.glb",
+  "tris": 1000,
+  "size_m": [
+   2.002,
+   7.011,
+   1.8
+  ],
+  "origin": "feet",
+  "frame": "gltf",
+  "anchors": {
+   "wire_ends": [
+    [
+     -1.0,
+     6.565,
+     0.78
+    ],
+    [
+     1.0,
+     6.565,
+     0.78
+    ],
+    [
+     -1.0,
+     6.565,
+     -0.78
+    ],
+    [
+     1.0,
+     6.565,
+     -0.78
+    ],
+    [
+     -1.0,
+     6.82,
+     0.0
+    ],
+    [
+     1.0,
+     6.82,
+     0.0
+    ]
+   ],
+   "flyer_face": {
+    "pos": [
+     0.0,
+     2.1,
+     0.166
+    ],
+    "size": [
+     0.26,
+     0.4
+    ],
+    "normal": [
+     0,
+     0,
+     1.0
+    ],
+    "face_colour": "paper"
+   }
+  }
+ },
+ {
+  "name": "street_lamp",
+  "file": "street_lamp.glb",
+  "tris": 384,
+  "size_m": [
+   0.36,
+   4.958,
+   1.895
+  ],
+  "origin": "feet",
+  "frame": "gltf",
+  "anchors": {
+   "light": [
+    0.0,
+    4.76,
+    0.6174
+   ]
+  }
+ },
+ {
+  "name": "bicycle",
+  "file": "bicycle.glb",
+  "tris": 1268,
+  "size_m": [
+   1.749,
+   1.107,
+   0.66
+  ],
+  "origin": "feet",
+  "frame": "gltf",
+  "anchors": {
+   "seat": [
+    -0.24,
+    0.9969,
+    0.0
+   ]
+  }
+ },
+ {
+  "name": "scooter_delivery",
+  "file": "scooter_delivery.glb",
+  "tris": 1308,
+  "size_m": [
+   1.775,
+   1.279,
+   0.7
+  ],
+  "origin": "feet",
+  "frame": "gltf",
+  "anchors": {
+   "seat": [
+    -0.1773,
+    0.6945,
+    0.0
+   ],
+   "box_side": {
+    "pos": [
+     -0.6573,
+     0.8545,
+     0.221
+    ],
+    "size": [
+     0.34,
+     0.24
+    ],
+    "normal": [
+     0,
+     0,
+     1.0
+    ],
+    "face_colour": "yellow"
+   }
+  }
+ },
+ {
+  "name": "bin_public",
+  "file": "bin_public.glb",
+  "tris": 592,
+  "size_m": [
+   1.0,
+   1.0,
+   0.48
+  ],
+  "origin": "feet",
+  "frame": "gltf",
+  "anchors": {
+   "label_left": {
+    "pos": [
+     -0.225,
+     0.56,
+     0.2
+    ],
+    "size": [
+     0.28,
+     0.14
+    ],
+    "normal": [
+     0,
+     0,
+     1.0
+    ],
+    "face_colour": "cloth_white"
+   },
+   "label_right": {
+    "pos": [
+     0.225,
+     0.56,
+     0.2
+    ],
+    "size": [
+     0.28,
+     0.14
+    ],
+    "normal": [
+     0,
+     0,
+     1.0
+    ],
+    "face_colour": "cloth_white"
+   }
+  }
+ },
+ {
+  "name": "planter_pot",
+  "file": "planter_pot.glb",
+  "tris": 412,
+  "size_m": [
+   0.628,
+   0.9,
+   0.579
+  ],
+  "origin": "feet",
+  "frame": "gltf",
+  "anchors": {}
+ },
+ {
+  "name": "tree_street",
+  "file": "tree_street.glb",
+  "tris": 520,
+  "size_m": [
+   2.672,
+   4.0,
+   2.41
+  ],
+  "origin": "feet",
+  "frame": "gltf",
+  "anchors": {}
+ },
+ {
+  "name": "bollard",
+  "file": "bollard.glb",
+  "tris": 182,
+  "size_m": [
+   0.28,
+   0.9,
+   0.266
+  ],
+  "origin": "feet",
+  "frame": "gltf",
+  "anchors": {}
+ },
+ {
+  "name": "laundry_pole",
+  "file": "laundry_pole.glb",
+  "tris": 436,
+  "size_m": [
+   2.3,
+   2.205,
+   0.55
+  ],
+  "origin": "feet",
+  "frame": "gltf",
+  "anchors": {}
+ },
+ {
+  "name": "laundry_pole_bar",
+  "file": "laundry_pole_bar.glb",
+  "tris": 324,
+  "size_m": [
+   2.5,
+   0.894,
+   0.06
+  ],
+  "origin": "rest_left",
+  "frame": "gltf",
+  "anchors": {
+   "rest_left": [
+    0,
+    0,
+    0.0
+   ],
+   "rest_right": [
+    2.2,
+    0,
+    0.0
+   ]
+  },
+  "mount": "origin = left rest point (pole underside) on laundry_pole_mounts.left; right rest point at +2.2 m X on laundry_pole_mounts.right"
+ },
+ {
+  "name": "water_urn",
+  "file": "water_urn.glb",
+  "tris": 790,
+  "size_m": [
+   0.638,
+   1.107,
+   0.518
+  ],
+  "origin": "feet",
+  "frame": "gltf",
+  "anchors": {
+   "tap": [
+    -0.0241,
+    0.685,
+    0.246
+   ],
+   "cup_shelf": [
+    -0.0241,
+    0.215,
+    -0.034
+   ]
+  }
+ },
+ {
+  "name": "red_door",
+  "file": "red_door.glb",
+  "tris": 752,
+  "size_m": [
+   2.4,
+   2.6,
+   0.16
+  ],
+  "origin": "wall",
+  "frame": "gltf",
+  "anchors": {
+   "couplet_left": {
+    "pos": [
+     -0.975,
+     1.15,
+     0.113
+    ],
+    "size": [
+     0.3,
+     1.7
+    ],
+    "normal": [
+     0,
+     0,
+     1.0
+    ],
+    "face_colour": "lantern_red"
+   },
+   "couplet_right": {
+    "pos": [
+     0.975,
+     1.15,
+     0.113
+    ],
+    "size": [
+     0.3,
+     1.7
+    ],
+    "normal": [
+     0,
+     0,
+     1.0
+    ],
+    "face_colour": "lantern_red"
+   },
+   "couplet_top": {
+    "pos": [
+     0,
+     2.425,
+     0.133
+    ],
+    "size": [
+     1.0,
+     0.24
+    ],
+    "normal": [
+     0,
+     0,
+     1.0
+    ],
+    "face_colour": "lantern_red"
+   },
+   "door": {
+    "pos": [
+     0,
+     0,
+     0.3
+    ],
+    "facing": [
+     0,
+     0,
+     1.0
+    ]
+   }
+  },
+  "mount": "origin = wall plane at door threshold, centred; surround projects 0.16 m (+Z glTF)"
+ }
+]

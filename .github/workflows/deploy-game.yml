@@ -1,0 +1,61 @@
+name: deploy-game
+# Builds the game from Fiazul/silver-tongue (branch world3d, packages/world3d) and publishes
+# packages/world3d/dist to this repo's gh-pages branch, which GitHub Pages serves at
+# https://fiazul.github.io/make-it-in-china/. All world3d URLs are relative, so it works under a subpath.
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+  schedule:
+    - cron: "17 3 * * *"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: deploy-game
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          repository: Fiazul/silver-tongue
+          ref: world3d
+          path: silver-tongue
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: silver-tongue/package-lock.json
+
+      - name: Build
+        working-directory: silver-tongue
+        run: |
+          npm ci
+          npm run build:course
+          npm run build -w @silver-tongue/world3d
+
+      - name: Brand as Make It in China
+        working-directory: silver-tongue/packages/world3d/dist
+        run: |
+          sed -i -E 's#<title>[^<]*</title>#<title>Make It in China</title>#' index.html
+          sed -i -E 's#(name="apple-mobile-web-app-title" content=")[^"]*#\1Make It in China#' index.html
+          if [ -f manifest.webmanifest ]; then
+            sed -i -E 's#("name": ")[^"]*#\1Make It in China#; s#("short_name": ")[^"]*#\1Make It in China#' manifest.webmanifest
+          fi
+          grep -q '<title>Make It in China</title>' index.html
+          touch .nojekyll
+          du -sh .
+
+      - uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: silver-tongue/packages/world3d/dist
+          enable_jekyll: false
+          commit_message: "deploy: silver-tongue world3d"

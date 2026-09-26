@@ -1,62 +1,55 @@
 # Make It in China
 
-Browser game that teaches HSK Mandarin by making you earn a living in it. Working title.
+Browser game that teaches Mandarin by making you earn a living in it. You arrive in a Chinese city knowing a few words; every job, purchase and conversation runs in Mandarin. Understanding more words unlocks better jobs, so language is your earning power. Calm small-world feel (talk-and-fetch quests, toon shading, faceless chunky characters, high fixed-ish camera). Phase 1 = HSK 1: one street, three jobs, ~150 words. Full design: `docs/design-doc.txt` / `docs/make-it-in-china-design-doc.pdf`.
 
-## Status
+**Play:** https://fiazul.github.io/make-it-in-china/ (desktop and phone).
 
-**v0.0.2 slice** — third-person district with movement, follow camera, spoken Mandarin dialogue, learner notebook, and eight buildings with DOM signs.
+## Built with silver-tongue
 
-## Setup
+Game logic, course content, dialogue and save format come from Jamil's engine **silver-tongue**: https://github.com/jamil314/silver-tongue. The 3D front end is the `packages/world3d` package on the `world3d` branch of the fork: https://github.com/Fiazul/silver-tongue/tree/world3d. It drives `@silver-tongue/core` via `send(input)` / `GameEvent[]` (seam described in `docs/silver-tongue-integration.md`).
 
-```bash
-npm install
-npm run dev
+This repo owns the art: the procedural Blender asset library, its docs, and the deploy that publishes the game here.
+
+## Controls
+
+- Desktop: WASD/arrows walk (Shift runs), E talks/enters, number keys pick replies, notebook button.
+- Phone: left-thumb virtual joystick (appears where the thumb lands), tap-to-walk, big E action button and notebook button; portrait and landscape layouts; "Add to Home Screen" runs fullscreen.
+
+## Assets
+
+All 3D assets are generated procedurally in headless Blender (4.2+); nothing is hand-modelled or downloaded:
+
+```sh
+blender -b --python tools/blender/build_all.py
 ```
 
-Open the URL Vite prints. Optional checks:
+Builds five sets into `assets/` (characters, buildings, street, props, interiors: 140 GLBs, ~97k tris), `assets/index.json`, per-set `manifest.json` + contact sheets, and the scale check `assets/street_mockup.png`. Humans share a rig with clips `idle`, `walk`, `talk`, `carry_idle`, `carry_walk`; pets have `idle`. Conventions: `docs/asset-conventions.md`. List and build status: `docs/asset-list.md`. Tool usage: `tools/blender/README.md`.
 
-```bash
-npm test
-npm run check:content
-npm run build
-```
+The game vendors the GLBs it uses into `packages/world3d/assets` in silver-tongue (`npm run assets:sync -w @silver-tongue/world3d`, reading from this repo's `assets/` via `WORLD3D_ASSETS`).
 
-Speech clips ship under `public/audio/`. Regenerate only if you are an author: `npm run tts` (needs Node 20, `edge-tts`, and `ffmpeg` on `PATH`).
+## Deploy
 
-## How to play
+`.github/workflows/deploy-game.yml` (manual, daily, and on push to main) checks out `Fiazul/silver-tongue@world3d`, runs `npm ci`, `npm run build:course`, `npm run build -w @silver-tongue/world3d`, retitles it "Make It in China" and publishes `packages/world3d/dist` to the `gh-pages` branch. Pages serves `gh-pages`.
 
-### Desktop
-- Title screen: **New game**, or **Continue** when a local save exists.
-- **WASD** or arrows walk; hold **Shift** to run.
-- Right-drag orbits the camera.
-- Walk up to an NPC, face them, press **E** or **Talk**.
-- **1–4** select a reply; **Enter** or **Say selected reply** commits it. Hover a reply to preview speech.
-- **Tab** or **Book** opens the notebook. **Esc** or **Menu** opens pause.
-- HUD speaker mutes or unmutes speech.
+## Layout
 
-### Phone
-- Left joystick moves; **Run** sprint; drag the open street to orbit.
-- **Talk** starts dialogue when near an NPC.
-- First tap on a reply previews it; second tap says it.
-- Use the on-screen menu and notebook controls the same way as desktop.
+| Path | What |
+|---|---|
+| `docs/` | design doc, asset list + status, asset conventions, silver-tongue integration notes |
+| `tools/blender/` | procedural asset pipeline (`build_all.py`, `sets/`, `lib/`, mock-up, contact sheets, cleanup) |
+| `assets/` | generated GLBs, manifests, sheets, `index.json`, street mock-up |
+| `briefs/` | worker briefs: the project log |
+| `legacy-prototype/` | first standalone Vite prototype, superseded; kept for reference |
+| `.github/workflows/` | game deploy to `gh-pages` |
 
-## Settings
+## Status and next steps
 
-Pause → settings. On this device you can change:
-- Speech volume and mute
-- Default pinyin visibility
-- Text size
+Done: full Phase 1 asset library (140 assets, rigged + animated characters); world3d on silver-tongue with street, enterable interiors (noodle shop, room, warehouse), NPC scenes, objectives, day tint, street life, notebook, touch controls, Pages deploy. In progress: rebasing world3d onto upstream silver-tongue 0.11.1.
 
-Mute and volume also follow the HUD speaker button and persist after reload.
-
-## Save and import
-
-Progress autosaves in the browser. From pause you can export a save string and import one later. Import replaces the current run after confirmation. **New game** clears the local save.
-
-## Audio
-
-NPC and player lines play automatically once audio is unlocked (first tap or key). Use **Replay** to hear a line again and **Pinyin** to show pronunciation. Tap a dialogue word for pinyin, gloss, and word audio. The notebook plays word and first-seen sentence clips.
-
-## Licence and credits
-
-See `docs/CREDITS.md`.
+Next (from `docs/asset-list.md` gaps):
+- Separate headwear exports beyond the chef hat; beanie/hoodie-up; tea flask; shopping-bag variants.
+- Extra clips from the list (wash, hand-over, point, shrug, sit).
+- Filler facade recolours; a bus model.
+- Mock-up fixes: cook's `npc_stand` hidden under the awning; near-side filler buildings show blank backs.
+- Presentation: toon gradient map, outline method check on mobile, CJK font subset, audio.
+- Upstream the world3d package to jamil314/silver-tongue.

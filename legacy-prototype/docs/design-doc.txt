@@ -1,0 +1,677 @@
+Make It in China — HSK Conversation Game: Design Doc
+
+
+
+
+  Make It in China — HSK Conversation Game:
+  Design Doc
+    2026-09-17        · ​@Someone
+
+
+  Summary
+  A browser game in three.js where the player arrives in China knowing a few words and has
+  to earn a living. Every job, purchase and conversation runs in Mandarin. Understanding
+  more words unlocks better jobs, so language is the player's earning power.
+
+       Teaches: HSK 2.0 vocabulary and sentence patterns, one HSK level per phase (Phase 1
+       = HSK 1, up to Phase 4 = HSK 4).
+       Feels like: Abeto's Messenger — calm, small world, talk-and-fetch quests, toon shading
+       with outlines.
+       Looks like: a Game Boy Advance-era fixed-camera game — small characters seen from
+       a high angle, simple levels.
+       Build now: Phase 1 only. One street, three jobs, 150 words.
+       Decide after: whether testers finish it, remember the words, and ask for more. Phase 2
+       is built only if they do.
+
+  "Make It in China" is a working title.
+
+
+  Concept and core loop
+  The player is taught a handful of words, then left in a Chinese city to live and earn. Each
+  new word arrives inside a new situation, and the same word comes back later with a
+  different nuance. Money gives the player a reason to care whether they understood.
+
+
+
+
+                                                                                          Page 1 of 14
+Make It in China — HSK Conversation Game: Design Doc
+
+
+
+
+     flowchart LR
+       A[Wake up<br/>new day] --> B[Pick a job<br/>or errand]
+       B --> C[NPC speaks<br/>audio + hanzi]
+       C --> D[Player replies]
+       D -->|understood| E[Earn yuan<br/>word logged]
+       D -->|misunderstood| F[Funny mix-up<br/>small cost]
+       F --> C
+       E --> G[Spend: rent,<br/>food, tools]
+       G --> H[New job or<br/>area unlocks]
+       H --> A
+
+
+  Comprehension gates progress. A wrong answer never shows a red cross; the NPC acts
+  on what the player said, and the player sees the result.
+
+  Examples of the word-then-nuance pattern:
+
+       要 first means "want" at a food stall, later "need" from a boss, later "going to" in a
+       schedule.
+       几 vs 多少 — asking "how many" for small and large numbers, learned by getting a
+       delivery count wrong.
+       你 vs 您 — the same sentence lands differently with a shopkeeper and with an
+       employer.
+       Measure words at the market:                    一个, 一杯, 一本.
+  Design principles
+  These are agreed and apply to every scene and system.
+
+   1. Language is the mechanic. Progress depends on understanding. No quiz screens
+       bolted onto a walking game.
+   2. Failure is cheap and funny. Wrong order delivered, overpaid for cabbage, got off at the
+      wrong stop. Small yuan loss, a laugh, try again. Never game over.
+   3. 90% known, 1–2 new. Each exchange uses about 90% words the player has already
+      met, plus one or two new ones. A scene of 4–6 exchanges introduces about 6 words in
+       total. More than that becomes guessing.
+   4. Audio first. The NPC speaks; hanzi are shown; pinyin stays hidden until tapped.
+   5. Characters live in the world. Signs, menus, receipts, price tags and phone messages
+      are all in hanzi. This is the reading practice.
+
+
+
+
+                                                                                               Page 2 of 14
+Make It in China — HSK Conversation Game: Design Doc
+
+
+
+
+   6. Nuance after experience. A mentor NPC explains a usage point after the player has
+      run into it, not before.
+   7. Hidden spaced repetition. Words the player missed come back in later scenes. The
+      player never sees a review queue.
+   8. Scripted dialogue, not a live LLM. Keeps vocabulary strictly in-level, runs offline, costs
+      nothing per player. LLM free-chat is a possible later add-on, constrained to the word
+       list.
+   9. Time moves in days, not a real-time clock. Nobody is rushed mid-sentence.
+ 10. Grey boxes before polish. Fun and learning get proven with placeholder art. Art
+     comes last.
+
+
+  Content constraints
+  These are hard requirements from the owner, not style preferences.
+
+  No depicted faces
+
+       Every human and animal character has no facial features: no eyes, nose or mouth, on
+       the mesh or in the texture.
+       No character portraits in dialogue. Use a name label and a speech bubble.
+       Characters are told apart by outfit, colour, headwear, build and what they carry.
+       The fixed high camera helps: characters are small and read by silhouette.
+       If a downloaded model has a painted face, erase it in the texture atlas before use. If the
+       face is modelled geometry, flatten it in Blender.
+       The exact standard (blank head acceptable, or something stricter) is an open question
+       below. Build character loading so the head mesh can be swapped in one place.
+
+  No real people or licensed IP
+
+       Jackie Chan Adventures and Messenger are references for look and feel only. No
+       names, likenesses, characters, assets or music from either.
+       Do not copy assets out of the Messenger site or its clones.
+
+  Economy and theme limits
+
+       Money comes from wages and trade only. No loans, interest, credit or investment
+       returns anywhere in the economy.
+       No gambling, lottery or chance-based money mechanics.
+       No alcohol. Business meals happen over tea and food.
+
+
+
+                                                                                            Page 3 of 14
+Make It in China — HSK Conversation Game: Design Doc
+
+
+
+
+        No romance plots or suggestive content.
+        No magic or supernatural story elements.
+        HSK 4 includes            信用卡 (credit card). Teach it as a word seen at a shop counter; keep it
+        out of the player's economy.
+
+
+  Phase plan
+  Phase N teaches HSK N (HSK 2.0 word lists). Finishing a phase means the player has met
+  every word on that level's list. Each phase is a new district of the same city and a step up
+  the career ladder.
+
+
+    Phase HSK               New                Career stage                What the language test      Reply mechanic
+          level             words                                          becomes
+                            (total)
+
+    1          HSK 1        150 (150)          Porter, dishwasher,         Did you catch the number,   Pick a response
+                                               delivery                    item, place?
+
+    2          HSK 2        150 (300)          Waiter, shop assistant      Orders, prices, time,       Assemble word tiles
+                                                                           directions, bargaining
+
+    3          HSK 3        300 (600)          Own stall or small shop     Suppliers, hiring,          Type pinyin
+                                                                           complaints
+
+    4          HSK 4        600                Real company: staff,        Did you say it the right    Type pinyin; pinyin
+                            (1,200)            ads, competitors, travel    way? Tone, connectives,     hints off by default
+                                                                           written messages
+
+
+  Notes for later phases:
+
+        Phase 4 shifts from comprehension to register. Several replies are grammatical but
+        differ in tone: how to refuse, apologise to a customer, or criticise an employee.
+        Connectives carry the meaning in Phase 4 (                        即使…也, 不管…都, 既然, 否则). Misreading
+        one flips the terms of a deal, which makes a good cheap failure.
+        HSK lists are thin on trade vocabulary in Phases 1–3. A small set of off-list words is
+        allowed (for example       ,        老板 进货
+                                        ). Mark them as bonus words in the notebook so the
+        HSK mapping stays honest.
+        Content volume doubles at Phase 4. Writing, not code, becomes the bottleneck. This is
+        why the dialogue pipeline in the architecture section matters from day one.
+
+  Only Phase 1 is in scope now. The engine should assume four districts exist.
+
+
+
+
+                                                                                                                       Page 4 of 14
+Make It in China — HSK Conversation Game: Design Doc
+
+
+
+
+  Phase 1 scope
+  Phase 1 covers arrival day through the first week: one street, 150 HSK 1 words, about 25
+  scenes of 4–6 exchanges each (roughly 6 new words per scene). A tester should finish it
+  in two to three hours across a few sittings.
+
+  In scope
+
+       One street with 6–8 locations: rented room, noodle shop, fruit stall, small supermarket,
+       bus stop, warehouse, tea house, a locked gate to the Phase 2 district.
+       About 8 NPCs: landlord, mentor (a friendly neighbour), three employers, two
+       shopkeepers, one customer type that repeats.
+       Three jobs:
+            Porter at the warehouse — numbers, 这/那, 个, 大/小, 多少.
+            Dishwasher at the noodle shop — food and drink words, 杯, 碗 (bonus), 不, 有/没有.
+            Delivery on foot — places, 在, 哪儿, 前面/后面, names and times.
+       Daily-life scenes: paying rent, buying food, asking the time, a phone message from the
+       landlord, a wrong-bus mix-up.
+       Wallet, day cycle, notebook, mentor explanations, hidden repetition of missed words.
+       Reply mechanic: pick one of 2–4 responses. Pinyin on tap.
+       Placeholder art first; final art pass at the end (see Build order).
+       Desktop and mobile browser, touch and keyboard.
+
+  Out of scope for Phase 1
+
+       Phases 2–4 content, word tiles, typed pinyin input.
+       Multiplayer, accounts, leaderboards.
+       LLM-driven free conversation.
+       Speech recognition.
+       A second language of instruction (English glosses only for now).
+
+  Deliverable before any code: a scene list — every scene with its location, NPC, job or
+  errand, known words used, and the new words each exchange introduces — so that all 150
+  words are covered and each appears at least three times.
+
+
+
+
+                                                                                          Page 5 of 14
+Make It in China — HSK Conversation Game: Design Doc
+
+
+
+
+  Learning system
+  The game tracks every word the player has met and how well they know it, and uses that
+  to choose and adapt scenes. None of this is shown as a study interface.
+
+  How a line is presented
+
+       Audio plays first. Hanzi appear in the speech bubble.
+       Tap any word: pinyin and English gloss pop up. Tapping is logged as "needed help" for
+       that word.
+       A replay button repeats the audio. A slow-speed replay is available.
+       New words in a line are subtly underlined the first time they appear.
+
+  How the player replies (Phase 1)
+
+       2–4 response options in hanzi, each with audio on tap.
+       Wrong options are plausible, not silly: same word class or sub-theme (    三 vs 四 vs 十, not
+       三 vs 猫).
+       Every option leads somewhere. A wrong choice triggers a consequence scene, then a
+       natural retry.
+
+  Word state
+
+  Each word has a state per player: unseen → met → shaky → known . Evidence that moves
+  it: correct reply depending on that word (up), wrong reply or pinyin tap (down), time since
+  last seen (decays toward shaky).
+
+  Hidden repetition
+
+       Scenes have slots where a word can be swapped: the customer's order, the number of
+       boxes, the delivery address. The engine fills slots with the player's shaky words.
+       Repeatable jobs (one more shift at the warehouse) are the review sessions. They pay a
+       little and draw mostly from shaky words.
+       Story scenes unlock only when the words they depend on are at least met .
+
+  Notebook
+
+       Fills automatically: word, pinyin, gloss, the sentence it was first heard in, audio.
+       Grouped by where the player learned it (noodle shop, warehouse), not alphabetically.
+       Bonus (off-list) words are marked as such.
+       Shows progress toward the HSK list for the phase: for example 87 of 150.
+
+  Mentor
+
+
+
+                                                                                              Page 6 of 14
+Make It in China — HSK Conversation Game: Design Doc
+
+
+
+
+  A neighbour NPC the player can visit in the evening. After the player has hit a usage point
+  in the day ( vs    几 多少 不 没
+                     , vs ), the mentor explains it in two or three lines with examples.
+  Explanations are in English in Phase 1.
+
+  Failure handling
+
+       A misunderstanding costs a few yuan or a little time, never progress.
+       The consequence is shown, not told: the wrong dish arrives, the boxes go to the wrong
+       door.
+       After two misses on the same exchange, the NPC rephrases more simply or gestures,
+       so nobody gets stuck.
+
+
+  Economy
+  The economy exists to make understanding matter, not to be a management sim. Keep it
+  small enough to balance in a spreadsheet.
+
+                                     元                 块
+       Currency: yuan ( , shown as in speech). Prices use realistic small numbers so
+       number listening is constant practice.
+       Income: wages per completed task. A shift is 3–5 exchanges. Better understanding
+       means fewer mix-ups, so more pay per shift.
+       Costs: weekly rent, daily food, occasional items (bus fare, a phone top-up, a work tool
+       that unlocks a job).
+       Day cycle: each day has a fixed number of action slots (for example 4). A job shift, an
+       errand or a mentor visit each use one. Sleeping ends the day. No real-time clock.
+       Rent pressure is soft. Short on rent: the landlord gives a few more days and the player
+       takes extra shifts. No eviction, no debt, no interest.
+       Progression gate: the Phase 2 district opens when the player has saved a set amount
+       and met all 150 words. Both conditions, so nobody grinds past the language.
+       Failure costs: a mix-up loses 1–5 yuan or one action slot. Never more.
+       Excluded by rule: loans, interest, credit, investment returns, gambling. See Content
+       constraints.
+
+  Tuning target for Phase 1: a player who understands most things reaches the gate in about
+  7 in-game days; a struggling player in about 10. Nobody should fall behind permanently.
+
+
+
+
+                                                                                           Page 7 of 14
+Make It in China — HSK Conversation Game: Design Doc
+
+
+
+
+  Visual direction and assets
+  The look is low-poly models with flat colours, toon shading and dark outlines, seen from a
+  fixed high camera. Most of the Messenger feel comes from shader and colour choices, not
+  from the meshes, so free CC0 models are enough.
+
+  Look
+
+       Flat colour materials, no detailed textures. Limited palette per district; warm and calm.
+       Toon shading ( MeshToonMaterial with a 2–3 step gradient map) plus outlines
+       ( OutlineEffect or an inverted-hull pass). Test both on mobile for cost.
+       Fixed camera, high three-quarter angle, slight follow. No player camera control in Phase
+       1.
+       Characters about 1/8 of screen height. Readable by silhouette and colour.
+       Hanzi signage everywhere: shop names, menus, price tags, bus stop boards. Render as
+       textures or troika-three-text with a bundled CJK font subset.
+       UI: speech bubbles anchored to characters, name labels, wallet and day counter,
+       notebook button. No portraits.
+
+  Characters (faceless)
+
+
+     Source                              What it gives              Licence   Work needed
+
+     Quaternius                          Blank-headed               CC0       None for face;
+     Universal                           mannequin +                          recolour per
+     Animation Library                   locomotion, idle, carry,             character
+                                         emote animations; free
+                                         Standard tier has 45
+                                         clips
+
+     Universal                           130+ more clips incl.      CC0       Pick the civilian
+     Animation Library                   civilian activities                  clips
+     2                                   (farming, drinking,
+                                         fishing)
+
+     Quaternius                          Base bodies                CC0       Check for face
+     Universal Base                      compatible with the                  geometry; flatten if
+     Characters                          library, FBX and glTF                present
+
+
+
+
+                                                                                                  Page 8 of 14
+Make It in China — HSK Conversation Game: Design Doc
+
+
+
+
+     Source                              What it gives           Licence           Work needed
+
+     Mixamo X Bot / Y                    Faceless mannequins +   Free with Adobe   Convert FBX to
+     Bot                                 large animation         account; check    GLB
+                                         catalogue               terms before
+                                                                 shipping
+
+     KayKit and Kenney                   More personality,       CC0               Erase painted eyes
+     characters                          varied outfits                            in the texture atlas
+
+
+  Recommendation: one shared skeleton (the Quaternius rig) for every human character, so
+  all animations work on everyone. Distinguish NPCs with colour, headwear and carried
+  props attached to bones.
+
+  Environment and props
+
+       Kenney city and food kits, Quaternius town and nature packs, KayKit city builder: all
+       CC0, consistent low-poly style.
+       Poly Pizza to search one-off props (bowls, crates, bicycles, stalls). Check the licence on
+       each model page; filter for CC0.
+       OpenGameArt and Sketchfab have useful pieces, but licences vary per file (CC0, CC-
+       BY, CC-BY-SA). Avoid CC-BY-SA.
+       A broader list: awesome-cc0.
+       Chinese street dressing (lanterns, shop fronts, signboards, steamers) will be thin in
+       free packs. Plan to model 10–15 simple props in Blender.
+
+  Asset rules
+
+       GLB only in the build. Convert everything in Blender; strip textures to flat colours;
+       compress with gltf-transform (Draco or Meshopt).
+       Keep a CREDITS.md with source, author and licence for every asset, including CC0
+       ones.
+       Stay in one art family. Do not mix realistic and low-poly models.
+
+  Reference reading on how Messenger was made: Communication Arts write-up.
+
+
+  Technical architecture
+  A static site: three.js for the world, plain DOM for UI, all content in JSON, saves in the
+  browser. No backend in Phase 1.
+
+
+
+
+                                                                                                    Page 9 of 14
+Make It in China — HSK Conversation Game: Design Doc
+
+
+
+
+  Stack
+
+       TypeScript + Vite + three.js. No game engine on top.
+       UI (bubbles, notebook, wallet) as HTML/CSS over the canvas, not drawn in WebGL.
+       Hanzi render sharply and the UI is easy to change.
+        GLTFLoader with Draco or Meshopt; AnimationMixer on the shared skeleton.
+       Movement: click or tap to walk on a navmesh or a simple walkable grid. No physics
+       engine.
+       State: one plain store (Zustand or a hand-rolled one) for wallet, day, word states, scene
+       flags.
+       Saves: localStorage as versioned JSON, with export/import as a text string so
+       testers can move devices.
+       Hosting: any static host. Target under 15 MB first load, 30 fps on a mid-range Android
+       phone.
+
+  Modules
+
+     flowchart TD
+         C[Content JSON<br/>scenes, words, world] --> D[Dialogue runner]
+         C --> W[World loader]
+         L[Learner model<br/>word states] --> D
+         D --> L
+         D --> E[Economy<br/>wallet, day slots]
+         D --> U[UI layer<br/>bubbles, notebook]
+         W --> R[three.js renderer<br/>toon + outline]
+         A[Audio player] --> U
+         D --> A
+         S[Save/load] --> L
+         S --> E
+
+
+  The dialogue runner is the centre. It reads a scene, asks the learner model which words to
+  put in the open slots, plays lines, takes the reply, and reports results to the learner model
+  and the economy.
+
+  Content format
+
+  Three files per phase: words.json (the HSK list plus bonus words), scenes.json ,
+   world.json (locations, NPC placements, signage text). A scene looks like this:
+
+
+
+
+                                                                                          Page 10 of 14
+Make It in China — HSK Conversation Game: Design Doc
+
+
+
+
+     {
+         "id": "p1_noodle_order_01",
+         "phase": 1,
+         "location": "noodle_shop",
+         "npc": "cook",
+         "requires": [" ", "        茶
+                                ", " "],       桌子           号
+         "introduces": ["   "],         杯子
+         "exchanges": [
+           {
+                 "line": {
+                   "hanzi": "{n}             号桌子，{count}杯茶。",
+                    "pinyin": "{n} hào zhuōzi, {count} bēi chá.",
+                    "en": "Table {n}, {count} cups of tea.",
+                    "audio": "p1_noodle_order_01_a",
+                    "words": [" ", "     号
+                                        ", "   ", " "] 桌子       杯子   茶
+                 },
+                 "slots": { "n": "number_1_10", "count": "number_1_10" },
+                 "replies": [
+                   { "hanzi": "            好。", "action": "serve", "check": "count_and_table" }
+                 ],
+                 "onWrong": "p1_noodle_wrong_table"
+             }
+         ]
+     }
+
+
+  Every line carries its own word tags. That is what makes the level checker and the learner
+  model possible.
+
+  Level checker (build this early)
+
+  A script run in CI and before every content commit. It fails the build if:
+
+         any line uses a word above the scene's phase that is not in introduces or marked
+         bonus;
+         an exchange introduces more than 2 new words;
+         a line's words tags do not match its hanzi after segmentation (use jieba or a fixed
+         dictionary segmenter);
+         any word on the phase list appears in fewer than 3 scenes;
+         a line is missing pinyin, English or audio.
+
+  With this in place, scenes can be drafted quickly (by a person or with an LLM) and still be
+  trusted.
+
+
+
+                                                                                                  Page 11 of 14
+Make It in China — HSK Conversation Game: Design Doc
+
+
+
+
+  Audio
+
+       Pre-generated audio files, not the browser's speech synthesis. Mandarin voice quality
+       in browsers varies widely by device.
+       Generate with a TTS service at build time from scenes.json ; one file per line, plus per-
+       word clips for the notebook. Slot lines need one clip per slot value, or clips stitched at
+       slot boundaries; decide during the vertical slice.
+       Two or three distinct voices so NPCs sound different. Opus or AAC, mono, about 32
+       kbps.
+       Have a native speaker spot-check the output, especially tones on                          一 and 不.
+  Text
+
+       Bundle a subset CJK font covering only the characters used (a few hundred glyphs in
+       Phase 1) to keep downloads small.
+       Pinyin with tone marks everywhere, never tone numbers.
+
+
+  Build order and milestones
+  Prove the loop with grey boxes first; spend on art only after testers say the loop works.
+  Week counts assume one developer part-time and are estimates to revise after M1.
+
+
+     Milestone                                         What exists at the end                           Rough
+                                                                                                        effort
+
+     M0 — Scene list                                   Spreadsheet of ~25 scenes covering all 150       1 week
+                                                       words, each word in 3+ scenes; owner signs off
+
+     M1 — Vertical slice                               One location (noodle shop), one job, 3 scenes,   2 weeks
+                                                       grey-box art, mannequin character, dialogue
+                                                       runner, wallet, audio for those lines
+
+     M2 — Pipeline                                     words.json for HSK 1, level checker in CI, TTS   1 week
+                                                       build script, save/load
+
+     M3 — Full Phase 1 in grey                         Whole street walkable, all scenes, three jobs,   3–4 weeks
+     box                                               day cycle, rent, notebook, mentor, hidden
+                                                       repetition
+
+     M4 — First playtest                               3–5 testers on the grey-box build; fix what      1 week
+                                                       confuses or bores them
+
+
+
+
+                                                                                                                 Page 12 of 14
+Make It in China — HSK Conversation Game: Design Doc
+
+
+
+
+     Milestone                                         What exists at the end                              Rough
+                                                                                                           effort
+
+     M5 — Art pass                                     Toon shader, outlines, final models, signage, UI    2–3 weeks
+                                                       styling, music and ambient sound
+
+     M6 — Validation playtest                          5–10 testers, measurements from the                 2 weeks
+                                                       Validation section, go/no-go on Phase 2
+
+
+  Rules for the order:
+
+       M1 is the decision point for the tech choices flagged as open (outline method, slot
+       audio, navmesh vs grid).
+       Nothing from M5 starts before M4 feedback is in.
+       Content is written against the level checker from M2 onward; no unchecked scenes in
+       the build.
+
+
+  Validation
+  Phase 2 gets built only if Phase 1 shows that people finish it, keep the words, and want
+  more. The thresholds below are starting proposals for the owner to confirm before M6.
+
+  Testers: 5–10 people. A few true beginners, a few at HSK 1–2. Unsupervised play on their
+  own device.
+
+
+     Question                                     How it is measured                      Proposed bar
+
+     Do they finish without                       Share of testers reaching the           At least 60%
+     being pushed?                                Phase 2 gate within two weeks
+
+     Do the words stick?                          30-word recognition check               Beginners score 70% or
+                                                  (audio → meaning, hanzi →               more
+                                                  meaning) 3–5 days after
+                                                  finishing
+
+     Is it competitive with                       Same check against a tester             Within 15 points, with better
+     drilling?                                    who spent equal time on a               listening scores
+                                                  flashcard or drill site
+
+     Do they want more?                           Asked at the end: would you             Most say yes unprompted
+                                                  play Phase 2?
+
+
+
+
+                                                                                                                    Page 13 of 14
+Make It in China — HSK Conversation Game: Design Doc
+
+
+
+
+     Question                                     How it is measured               Proposed bar
+
+     Where does it drag?                          Per-scene drop-off, replays,     No scene loses more than
+                                                  pinyin taps, time per exchange   20% of players
+
+
+  Instrumentation for this is local only: the game writes an event log into the save, and
+  testers export it as a text string. No analytics service, no accounts.
+
+  The game will teach fewer words per minute than drilling. What it should win on is
+  listening at natural speed, recall in context, and people coming back on their own. If it
+  does not win on those, stop.
+
+
+  Open questions
+  The implementer should get answers to these from the owner before M1 ends.
+
+       No-face standard: is a blank, featureless head acceptable, or is something stricter
+       needed (for example hooded or covered heads for all characters)?
+       Audience: adult self-learners, children, or both? This sets text size, humour and how
+       much English the mentor uses.
+       Explanation language: English only in Phase 1, or Bengali as well?
+       Title: "Make It in China" is a placeholder.
+       Protagonist: fixed character or player-chosen outfit and colour? Any backstory
+       (where they came from, why they are there)?
+       City: a generic fictional Chinese city, or modelled on a real one?
+       TTS provider and budget for pre-generated audio, and who does the native-speaker
+       check.
+       Validation thresholds: confirm or change the proposed bars.
+       Animals: do the faceless rules apply to cats, dogs and birds in the street, or should
+       animals be left out?
+       Release intent: private test only, or public and free, or paid later? This affects licence
+       choices (Mixamo terms, fonts, TTS voice rights).
+
+
+
+
+                                                                                                         Page 14 of 14
+

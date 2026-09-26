@@ -1,9 +1,10 @@
-node_modules/
+# scratch screenshots at repo root (docs/ and assets/ images are kept)
+/*.png
+__pycache__/
+*.pyc
 dist/
-.delegates/
-*.log
-.vite/
-coverage/
-assets/raw/
-assets/extracted/
+node_modules/
 .playwright-mcp/
+*.log
+# separate git clone of the engine, if checked out locally
+/silver-tongue/

@@ -1,0 +1,9 @@
+node_modules/
+dist/
+.delegates/
+*.log
+.vite/
+coverage/
+assets/raw/
+assets/extracted/
+.playwright-mcp/

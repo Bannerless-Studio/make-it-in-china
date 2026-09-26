@@ -1,0 +1,1088 @@
+[
+ {
+  "name": "box_small",
+  "file": "box_small.glb",
+  "tris": 104,
+  "budget": 500,
+  "size_m": [
+   0.32,
+   0.303,
+   0.287
+  ],
+  "anchors": {
+   "label_face": {
+    "pos": [
+     -0.0704,
+     0.126,
+     0.1437
+    ],
+    "size": [
+     0.1088,
+     0.066
+    ],
+    "normal": [
+     0.0,
+     0.0,
+     1.0
+    ]
+   },
+   "top": [
+    0.0,
+    0.303,
+    -0.0002
+   ]
+  },
+  "origin": "feet",
+  "frame": "gltf"
+ },
+ {
+  "name": "box_medium",
+  "file": "box_medium.glb",
+  "tris": 104,
+  "budget": 500,
+  "size_m": [
+   0.5,
+   0.503,
+   0.426
+  ],
+  "anchors": {
+   "label_face": {
+    "pos": [
+     -0.11,
+     0.21,
+     0.2138
+    ],
+    "size": [
+     0.17,
+     0.11
+    ],
+    "normal": [
+     0.0,
+     0.0,
+     1.0
+    ]
+   },
+   "top": [
+    0.0,
+    0.503,
+    -0.0002
+   ]
+  },
+  "origin": "feet",
+  "frame": "gltf"
+ },
+ {
+  "name": "box_large",
+  "file": "box_large.glb",
+  "tris": 104,
+  "budget": 500,
+  "size_m": [
+   0.8,
+   0.803,
+   0.646
+  ],
+  "anchors": {
+   "label_face": {
+    "pos": [
+     -0.176,
+     0.336,
+     0.3238
+    ],
+    "size": [
+     0.272,
+     0.176
+    ],
+    "normal": [
+     0.0,
+     0.0,
+     1.0
+    ]
+   },
+   "top": [
+    0.0,
+    0.803,
+    -0.0002
+   ]
+  },
+  "origin": "feet",
+  "frame": "gltf"
+ },
+ {
+  "name": "crate_wood",
+  "file": "crate_wood.glb",
+  "tris": 240,
+  "budget": 500,
+  "size_m": [
+   0.504,
+   0.382,
+   0.404
+  ],
+  "anchors": {
+   "top": [
+    0.0,
+    0.382,
+    0.0
+   ]
+  },
+  "origin": "feet",
+  "frame": "gltf"
+ },
+ {
+  "name": "hand_truck",
+  "file": "hand_truck.glb",
+  "tris": 432,
+  "budget": 900,
+  "size_m": [
+   0.565,
+   1.195,
+   0.45
+  ],
+  "anchors": {
+   "load_plate": [
+    0.0,
+    0.014,
+    0.105
+   ],
+   "handle": [
+    0.0,
+    1.18,
+    -0.105
+   ]
+  },
+  "origin": "feet",
+  "frame": "gltf"
+ },
+ {
+  "name": "pallet",
+  "file": "pallet.glb",
+  "tris": 264,
+  "budget": 500,
+  "size_m": [
+   1.2,
+   0.144,
+   1.0
+  ],
+  "anchors": {
+   "top": [
+    0.0,
+    0.144,
+    0.0
+   ]
+  },
+  "origin": "feet",
+  "frame": "gltf"
+ },
+ {
+  "name": "sack_rice",
+  "file": "sack_rice.glb",
+  "tris": 338,
+  "budget": 500,
+  "size_m": [
+   0.478,
+   0.6,
+   0.338
+  ],
+  "anchors": {
+   "grip": [
+    0.0,
+    0.505,
+    0.0
+   ]
+  },
+  "origin": "feet",
+  "frame": "gltf"
+ },
+ {
+  "name": "box_stack",
+  "file": "box_stack.glb",
+  "tris": 312,
+  "budget": 500,
+  "size_m": [
+   0.8,
+   1.611,
+   0.646
+  ],
+  "anchors": {
+   "top": [
+    -0.02,
+    1.61,
+    -0.0502
+   ]
+  },
+  "origin": "feet",
+  "frame": "gltf"
+ },
+ {
+  "name": "bowl_empty",
+  "file": "bowl_empty.glb",
+  "tris": 216,
+  "budget": 500,
+  "size_m": [
+   0.16,
+   0.07,
+   0.16
+  ],
+  "anchors": {},
+  "origin": "feet",
+  "frame": "gltf"
+ },
+ {
+  "name": "bowl_noodles",
+  "file": "bowl_noodles.glb",
+  "tris": 492,
+  "budget": 500,
+  "size_m": [
+   0.232,
+   0.081,
+   0.16
+  ],
+  "anchors": {},
+  "origin": "feet",
+  "frame": "gltf"
+ },
+ {
+  "name": "bowl_soup",
+  "file": "bowl_soup.glb",
+  "tris": 352,
+  "budget": 500,
+  "size_m": [
+   0.16,
+   0.104,
+   0.16
+  ],
+  "anchors": {},
+  "origin": "feet",
+  "frame": "gltf"
+ },
+ {
+  "name": "cup_glass",
+  "file": "cup_glass.glb",
+  "tris": 140,
+  "budget": 500,
+  "size_m": [
+   0.07,
+   0.09,
+   0.07
+  ],
+  "anchors": {},
+  "origin": "feet",
+  "frame": "gltf"
+ },
+ {
+  "name": "teacup",
+  "file": "teacup.glb",
+  "tris": 236,
+  "budget": 500,
+  "size_m": [
+   0.07,
+   0.052,
+   0.07
+  ],
+  "anchors": {},
+  "origin": "feet",
+  "frame": "gltf"
+ },
+ {
+  "name": "teapot",
+  "file": "teapot.glb",
+  "tris": 380,
+  "budget": 500,
+  "size_m": [
+   0.18,
+   0.106,
+   0.116
+  ],
+  "anchors": {},
+  "origin": "feet",
+  "frame": "gltf"
+ },
+ {
+  "name": "kettle",
+  "file": "kettle.glb",
+  "tris": 256,
+  "budget": 500,
+  "size_m": [
+   0.278,
+   0.248,
+   0.212
+  ],
+  "anchors": {},
+  "origin": "feet",
+  "frame": "gltf"
+ },
+ {
+  "name": "chopsticks",
+  "file": "chopsticks.glb",
+  "tris": 64,
+  "budget": 500,
+  "size_m": [
+   0.052,
+   0.01,
+   0.24
+  ],
+  "anchors": {},
+  "origin": "feet",
+  "frame": "gltf"
+ },
+ {
+  "name": "spoon",
+  "file": "spoon.glb",
+  "tris": 92,
+  "budget": 500,
+  "size_m": [
+   0.044,
+   0.034,
+   0.118
+  ],
+  "anchors": {},
+  "origin": "feet",
+  "frame": "gltf"
+ },
+ {
+  "name": "tray",
+  "file": "tray.glb",
+  "tris": 220,
+  "budget": 500,
+  "size_m": [
+   0.4,
+   0.028,
+   0.3
+  ],
+  "anchors": {
+   "top": [
+    0.0,
+    0.012,
+    0.0
+   ]
+  },
+  "origin": "feet",
+  "frame": "gltf"
+ },
+ {
+  "name": "dish_rack",
+  "file": "dish_rack.glb",
+  "tris": 468,
+  "budget": 500,
+  "size_m": [
+   0.5,
+   0.229,
+   0.28
+  ],
+  "anchors": {},
+  "origin": "feet",
+  "frame": "gltf"
+ },
+ {
+  "name": "wok_on_burner",
+  "file": "wok_on_burner.glb",
+  "tris": 484,
+  "budget": 500,
+  "size_m": [
+   0.536,
+   0.314,
+   0.4
+  ],
+  "anchors": {},
+  "origin": "feet",
+  "frame": "gltf"
+ },
+ {
+  "name": "sink_double",
+  "file": "sink_double.glb",
+  "tris": 868,
+  "budget": 900,
+  "size_m": [
+   1.2,
+   1.071,
+   0.625
+  ],
+  "anchors": {
+   "worker_stand": {
+    "pos": [
+     0.0,
+     0.0,
+     0.5378
+    ],
+    "facing": [
+     0.0,
+     0.0,
+     -1.0
+    ]
+   },
+   "basin_left": [
+    -0.3,
+    0.61,
+    -0.0122
+   ],
+   "basin_right": [
+    0.3,
+    0.61,
+    -0.0122
+   ]
+  },
+  "origin": "feet",
+  "frame": "gltf"
+ },
+ {
+  "name": "counter_noodle",
+  "file": "counter_noodle.glb",
+  "tris": 1252,
+  "budget": 1500,
+  "size_m": [
+   2.48,
+   1.511,
+   0.7
+  ],
+  "anchors": {
+   "npc_stand": {
+    "pos": [
+     0.0,
+     0.0,
+     -0.85
+    ],
+    "facing": [
+     0.0,
+     0.0,
+     1.0
+    ]
+   },
+   "player_stand": {
+    "pos": [
+     0.0,
+     0.0,
+     0.85
+    ],
+    "facing": [
+     0.0,
+     0.0,
+     -1.0
+    ]
+   },
+   "pass_shelf": [
+    0.0,
+    1.44,
+    0.0
+   ],
+   "front_panel": {
+    "pos": [
+     0.0,
+     0.82,
+     0.313
+    ],
+    "size": [
+     2.4,
+     0.12
+    ],
+    "normal": [
+     0.0,
+     0.0,
+     1.0
+    ]
+   },
+   "bowl_1": [
+    -0.7,
+    1.44,
+    0.0
+   ],
+   "bowl_2": [
+    0.0,
+    1.44,
+    0.0
+   ],
+   "bowl_3": [
+    0.7,
+    1.44,
+    0.0
+   ]
+  },
+  "origin": "feet",
+  "frame": "gltf"
+ },
+ {
+  "name": "takeaway_box",
+  "file": "takeaway_box.glb",
+  "tris": 164,
+  "budget": 500,
+  "size_m": [
+   0.204,
+   0.083,
+   0.16
+  ],
+  "anchors": {
+   "top": [
+    0.0,
+    0.082,
+    0.0
+   ]
+  },
+  "origin": "feet",
+  "frame": "gltf"
+ },
+ {
+  "name": "takeaway_bag",
+  "file": "takeaway_bag.glb",
+  "tris": 304,
+  "budget": 500,
+  "size_m": [
+   0.251,
+   0.297,
+   0.153
+  ],
+  "anchors": {
+   "grip": [
+    0.0,
+    0.27,
+    0.0
+   ]
+  },
+  "origin": "feet",
+  "frame": "gltf"
+ },
+ {
+  "name": "door_plate",
+  "file": "door_plate.glb",
+  "tris": 96,
+  "budget": 500,
+  "size_m": [
+   0.2,
+   0.1,
+   0.017
+  ],
+  "anchors": {
+   "text_face": {
+    "pos": [
+     0.0,
+     0.05,
+     0.0087
+    ],
+    "size": [
+     0.176,
+     0.076
+    ],
+    "normal": [
+     0.0,
+     0.0,
+     1.0
+    ]
+   },
+   "mount": [
+    0.0,
+    0.05,
+    -0.0085
+   ]
+  },
+  "origin": "feet",
+  "frame": "gltf"
+ },
+ {
+  "name": "apple",
+  "file": "apple.glb",
+  "tris": 156,
+  "budget": 500,
+  "size_m": [
+   0.082,
+   0.088,
+   0.078
+  ],
+  "anchors": {},
+  "origin": "feet",
+  "frame": "gltf"
+ },
+ {
+  "name": "banana_bunch",
+  "file": "banana_bunch.glb",
+  "tris": 366,
+  "budget": 500,
+  "size_m": [
+   0.239,
+   0.083,
+   0.168
+  ],
+  "anchors": {},
+  "origin": "feet",
+  "frame": "gltf"
+ },
+ {
+  "name": "orange",
+  "file": "orange.glb",
+  "tris": 140,
+  "budget": 500,
+  "size_m": [
+   0.084,
+   0.086,
+   0.08
+  ],
+  "anchors": {},
+  "origin": "feet",
+  "frame": "gltf"
+ },
+ {
+  "name": "watermelon_slice",
+  "file": "watermelon_slice.glb",
+  "tris": 348,
+  "budget": 500,
+  "size_m": [
+   0.252,
+   0.22,
+   0.066
+  ],
+  "anchors": {},
+  "origin": "feet",
+  "frame": "gltf"
+ },
+ {
+  "name": "cabbage",
+  "file": "cabbage.glb",
+  "tris": 196,
+  "budget": 500,
+  "size_m": [
+   0.233,
+   0.174,
+   0.233
+  ],
+  "anchors": {},
+  "origin": "feet",
+  "frame": "gltf"
+ },
+ {
+  "name": "tomato",
+  "file": "tomato.glb",
+  "tris": 148,
+  "budget": 500,
+  "size_m": [
+   0.072,
+   0.07,
+   0.073
+  ],
+  "anchors": {},
+  "origin": "feet",
+  "frame": "gltf"
+ },
+ {
+  "name": "bao_bun",
+  "file": "bao_bun.glb",
+  "tris": 264,
+  "budget": 500,
+  "size_m": [
+   0.152,
+   0.065,
+   0.152
+  ],
+  "anchors": {},
+  "origin": "feet",
+  "frame": "gltf"
+ },
+ {
+  "name": "dumpling_plate",
+  "file": "dumpling_plate.glb",
+  "tris": 456,
+  "budget": 500,
+  "size_m": [
+   0.242,
+   0.05,
+   0.23
+  ],
+  "anchors": {},
+  "origin": "feet",
+  "frame": "gltf"
+ },
+ {
+  "name": "bottle_water",
+  "file": "bottle_water.glb",
+  "tris": 176,
+  "budget": 500,
+  "size_m": [
+   0.067,
+   0.25,
+   0.064
+  ],
+  "anchors": {},
+  "origin": "feet",
+  "frame": "gltf"
+ },
+ {
+  "name": "milk_carton",
+  "file": "milk_carton.glb",
+  "tris": 44,
+  "budget": 500,
+  "size_m": [
+   0.073,
+   0.196,
+   0.073
+  ],
+  "anchors": {
+   "text_face": {
+    "pos": [
+     0.0,
+     0.055,
+     0.037
+    ],
+    "size": [
+     0.07,
+     0.05
+    ],
+    "normal": [
+     0.0,
+     0.0,
+     1.0
+    ]
+   }
+  },
+  "origin": "feet",
+  "frame": "gltf"
+ },
+ {
+  "name": "tea_box",
+  "file": "tea_box.glb",
+  "tris": 100,
+  "budget": 500,
+  "size_m": [
+   0.104,
+   0.15,
+   0.075
+  ],
+  "anchors": {
+   "text_face": {
+    "pos": [
+     0.0,
+     0.065,
+     0.0377
+    ],
+    "size": [
+     0.06,
+     0.07
+    ],
+    "normal": [
+     0.0,
+     0.0,
+     1.0
+    ]
+   }
+  },
+  "origin": "feet",
+  "frame": "gltf"
+ },
+ {
+  "name": "egg_tray",
+  "file": "egg_tray.glb",
+  "tris": 732,
+  "budget": 900,
+  "size_m": [
+   0.32,
+   0.064,
+   0.27
+  ],
+  "anchors": {
+   "top": [
+    0.0,
+    0.064,
+    0.0
+   ]
+  },
+  "origin": "feet",
+  "frame": "gltf"
+ },
+ {
+  "name": "rice_bag",
+  "file": "rice_bag.glb",
+  "tris": 236,
+  "budget": 500,
+  "size_m": [
+   0.33,
+   0.5,
+   0.176
+  ],
+  "anchors": {
+   "text_face": {
+    "pos": [
+     0.0,
+     0.2,
+     0.0885
+    ],
+    "size": [
+     0.14,
+     0.05
+    ],
+    "normal": [
+     0.0,
+     0.0,
+     1.0
+    ]
+   },
+   "grip": [
+    0.0,
+    0.46,
+    -0.003
+   ]
+  },
+  "origin": "feet",
+  "frame": "gltf"
+ },
+ {
+  "name": "crate_apples",
+  "file": "crate_apples.glb",
+  "tris": 860,
+  "budget": 900,
+  "size_m": [
+   0.507,
+   0.403,
+   0.384
+  ],
+  "anchors": {
+   "price_tag": {
+    "pos": [
+     0.1885,
+     0.36,
+     -0.1245
+    ],
+    "size": [
+     0.13,
+     0.085
+    ],
+    "normal": [
+     0.0,
+     0.0,
+     1.0
+    ]
+   },
+   "top": [
+    -0.0015,
+    0.224,
+    0.0
+   ]
+  },
+  "origin": "feet",
+  "frame": "gltf"
+ },
+ {
+  "name": "crate_oranges",
+  "file": "crate_oranges.glb",
+  "tris": 836,
+  "budget": 900,
+  "size_m": [
+   0.507,
+   0.403,
+   0.384
+  ],
+  "anchors": {
+   "price_tag": {
+    "pos": [
+     0.1885,
+     0.36,
+     -0.1245
+    ],
+    "size": [
+     0.13,
+     0.085
+    ],
+    "normal": [
+     0.0,
+     0.0,
+     1.0
+    ]
+   },
+   "top": [
+    -0.0015,
+    0.224,
+    0.0
+   ]
+  },
+  "origin": "feet",
+  "frame": "gltf"
+ },
+ {
+  "name": "crate_bananas",
+  "file": "crate_bananas.glb",
+  "tris": 854,
+  "budget": 900,
+  "size_m": [
+   0.507,
+   0.403,
+   0.385
+  ],
+  "anchors": {
+   "price_tag": {
+    "pos": [
+     0.1885,
+     0.36,
+     -0.1251
+    ],
+    "size": [
+     0.13,
+     0.085
+    ],
+    "normal": [
+     0.0,
+     0.0,
+     1.0
+    ]
+   },
+   "top": [
+    -0.0015,
+    0.224,
+    -0.0006
+   ]
+  },
+  "origin": "feet",
+  "frame": "gltf"
+ },
+ {
+  "name": "shelf_unit",
+  "file": "shelf_unit.glb",
+  "tris": 944,
+  "budget": 2000,
+  "size_m": [
+   1.0,
+   1.8,
+   0.406
+  ],
+  "anchors": {
+   "customer_stand": {
+    "pos": [
+     0.0,
+     0.0,
+     0.797
+    ],
+    "facing": [
+     0.0,
+     0.0,
+     -1.0
+    ]
+   },
+   "shelf_1": [
+    0.0,
+    0.1325,
+    -0.003
+   ],
+   "price_strip_1": {
+    "pos": [
+     0.0,
+     0.115,
+     0.2035
+    ],
+    "size": [
+     1.0,
+     0.035
+    ],
+    "normal": [
+     0.0,
+     0.0,
+     1.0
+    ]
+   },
+   "shelf_2": [
+    0.0,
+    0.5725,
+    -0.003
+   ],
+   "price_strip_2": {
+    "pos": [
+     0.0,
+     0.555,
+     0.2035
+    ],
+    "size": [
+     1.0,
+     0.035
+    ],
+    "normal": [
+     0.0,
+     0.0,
+     1.0
+    ]
+   },
+   "shelf_3": [
+    0.0,
+    1.0125,
+    -0.003
+   ],
+   "price_strip_3": {
+    "pos": [
+     0.0,
+     0.995,
+     0.2035
+    ],
+    "size": [
+     1.0,
+     0.035
+    ],
+    "normal": [
+     0.0,
+     0.0,
+     1.0
+    ]
+   },
+   "shelf_4": [
+    0.0,
+    1.4525,
+    -0.003
+   ],
+   "price_strip_4": {
+    "pos": [
+     0.0,
+     1.435,
+     0.2035
+    ],
+    "size": [
+     1.0,
+     0.035
+    ],
+    "normal": [
+     0.0,
+     0.0,
+     1.0
+    ]
+   }
+  },
+  "origin": "feet",
+  "frame": "gltf"
+ },
+ {
+  "name": "freezer_chest",
+  "file": "freezer_chest.glb",
+  "tris": 432,
+  "budget": 500,
+  "size_m": [
+   1.2,
+   0.846,
+   0.655
+  ],
+  "anchors": {
+   "sign_face": {
+    "pos": [
+     0.0,
+     0.55,
+     0.328
+    ],
+    "size": [
+     1.0,
+     0.14
+    ],
+    "normal": [
+     0.0,
+     0.0,
+     1.0
+    ]
+   },
+   "customer_stand": {
+    "pos": [
+     0.0,
+     0.0,
+     0.7975
+    ],
+    "facing": [
+     0.0,
+     0.0,
+     -1.0
+    ]
+   },
+   "lid_top": [
+    0.0,
+    0.835,
+    -0.0025
+   ]
+  },
+  "origin": "feet",
+  "frame": "gltf"
+ }
+]
