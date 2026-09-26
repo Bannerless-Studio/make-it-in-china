@@ -2,7 +2,9 @@
 
 Browser game that teaches Mandarin by making you earn a living in it. You arrive in a Chinese city knowing a few words; every job, purchase and conversation runs in Mandarin. Understanding more words unlocks better jobs, so language is your earning power. Calm small-world feel (talk-and-fetch quests, toon shading, faceless chunky characters, high fixed-ish camera). Phase 1 = HSK 1: one street, three jobs, ~150 words. Full design: `docs/design-doc.txt` / `docs/make-it-in-china-design-doc.pdf`.
 
-**Play:** https://fiazul.github.io/make-it-in-china/ (desktop and phone).
+**Play:** https://bannerless-studio.github.io/make-it-in-china/ (desktop and phone).
+
+New here? Read [HANDOFF.md](HANDOFF.md): who did what, what is done, what is not, and which upstream version the 3D game is rebased on.
 
 ## Built with silver-tongue
 
