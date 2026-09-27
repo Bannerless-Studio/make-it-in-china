@@ -13,7 +13,7 @@ varying float vStVis;
   vStView = mvPosition.xyz;
   vStWorldY = (modelMatrix * vec4(transformed, 1.0)).y;
   int stId = int(${Ae} + 0.5);
-  vStHole = stId >= 1 ? 1.0 : 0.0;
+  vStHole = stId == 1 ? 1.0 : 0.0;
   vStVis = stId >= 2 ? stCluster[min(stId - 2, ST_MAX - 1)] : 1.0;
 `,Fo=`
 #define ST_FOCUS ${c0.maxFocus}
