@@ -1,0 +1,13 @@
+[
+  {
+    "id": "zh-china",
+    "language": "zh",
+    "setting": "china-city",
+    "learners": [
+      "en"
+    ],
+    "learnerNames": {
+      "en": "English"
+    }
+  }
+]
