@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html data-version="e8dca2a · 2026-09-27 20:00 UTC">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no" />
@@ -14,9 +14,10 @@
     <link rel="icon" type="image/png" sizes="192x192" href="./icons/icon-192.png" />
     <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png" />
     <title>Make It in China</title>
-    <!-- the UI skin's faces (start/start.css): Lilita One for display, Noto Serif SC for the lines; system fallbacks offline -->
+    <!-- the UI skin's faces (start/start.css): Lilita One for display, Noto Serif SC for the lines; system fallbacks offline.
+         Not render-blocking (media="print" until it loads): on a bad connection the page and its loading bar paint at once. -->
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lilita+One&amp;family=Noto+Serif+SC:wght@600&amp;display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lilita+One&amp;family=Noto+Serif+SC:wght@600&amp;display=swap" media="print" onload="this.media='all'" />
     <style>
 /* Silver Tongue start flow: one design system. Ink and lacquer on a toon town.
    Tokens first; components (.st-btn, .st-card, .hint-chip, ...) below. All motion < 250 ms except the
@@ -280,8 +281,15 @@ html, body { margin: 0; height: 100%; overflow: hidden; background: #edd9b8; col
 .ld-pct { font-family: var(--font-display); font-weight: 400; font-size: 1.25rem; color: var(--gold); }
 .ld-bytes { color: var(--paper-deep); font-variant-numeric: tabular-nums; }
 .ld-item { min-height: 1.3em; margin: 0.35em 0 0; font-size: 0.85rem; color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-#loading.error .ld-bar, #loading.error .ld-line { display: none; }
+#loading.error .ld-bar, #loading.error .ld-line, #loading.error .ld-slow { display: none; }
 #loading.error .ld-item { color: var(--paper); font-size: 1rem; white-space: normal; }
+/* a stall (no byte for 15 s: preload.js before the game's JS, ui/loading.ts after) and the failure's Retry / Reload with the error in small type */
+.ld-slow { margin: 0.5em 0 0; font-size: 0.9rem; color: var(--gold); }
+.ld-retry, .ld-err { display: none; }
+/* a failure shows over the start flow too (#start 60): a player never goes through the title to find the game can't start */
+#loading.error { z-index: 65; }
+#loading.error .ld-retry { display: inline-flex; margin-top: 1.1em; }
+#loading.error .ld-err { display: block; margin: 0.9em 0 0; font-size: 0.72rem; color: var(--muted); overflow-wrap: anywhere; }
 @media (prefers-reduced-motion: reduce) { .ld-fill { transition: none; } }
 /* the start flow (start/flow.ts) over everything, the loading screen included (the town loads underneath) */
 #start.st-root { z-index: 60; }
@@ -325,6 +333,11 @@ h2, h3 { font-family: var(--font-display); font-weight: 400; letter-spacing: 0.0
 .obj-next { font-size: 0.78rem; opacity: 0.55; }
 .hud .obj-go { pointer-events: auto !important; display: inline-block; margin-top: 0.3em; padding: 0.15em 0.65em; font-size: 0.8rem; background: var(--gold); color: var(--ink); box-shadow: var(--chip-lift); }
 .hud .obj-go:hover { background-color: #f0c465; }
+/* the build's version (build.mjs, src/version.ts): a muted corner tag on the loading card, the
+   start flow's title screen and the HUD (page.css alone positions it: fixed bottom-right wins over
+   wherever it sits in the DOM); Settings prints the same value in full (.settings-version below). */
+.build-version { position: fixed; right: max(6px, env(safe-area-inset-right)); bottom: max(4px, env(safe-area-inset-bottom)); z-index: 1; font-family: var(--font-body); font-size: 10px; line-height: 1; opacity: 0.45; white-space: nowrap; pointer-events: none !important; }
+.st-title .build-version { color: var(--paper); }
 /* the screen-edge arrow at an off-screen target: a gold badge turned towards it, the name and distance under it */
 .way-edge { position: fixed; left: 0; top: 0; width: 0; height: 0; z-index: 4; pointer-events: none !important; will-change: transform; }
 .way-edge-arrow { position: absolute; left: -17px; top: -17px; width: 34px; height: 34px; border-radius: 50%; background: var(--gold); border: 2px solid var(--ink); box-shadow: var(--chip-lift); }
@@ -492,6 +505,8 @@ dialog h2 { margin: 0 0 0.5em; font-size: clamp(1.4rem, 6vw, 1.9rem); line-heigh
 .set-name input { flex: 1; min-width: 0; font: inherit; font-size: 1.1rem; padding: 0.35em 0.5em; border: var(--border); border-radius: var(--radius-sm); background: #fffdf7; user-select: text; -webkit-user-select: text; }
 .set-msg { min-height: 1.2em; font-size: 0.85rem; color: var(--jade); margin: 0; }
 .set-msg.err { color: var(--lacquer); }
+/* the build's version, in full (version.ts versionLine; .build-version above is the muted corner tag everywhere else) */
+.settings-version { margin: 0.2em 0 0; font-size: 0.8rem; color: var(--ink-soft); text-align: center; }
 .set-row input[type="range"] { width: 100%; accent-color: var(--jade); min-height: 32px; }
 .menu .err { color: var(--bad); margin: 0; }
 
@@ -558,17 +573,14 @@ html:not(.touch) .action-btn { display: none !important; }
 .compact.landscape .choices { top: var(--choices-y); }
 
     </style>
-    <link rel="modulepreload" href="./chunks/chunk-4N77HSGQ.js" />
-    <link rel="modulepreload" href="./chunks/chunk-4G6ZWU5N.js" />
-    <link rel="modulepreload" href="./chunks/chunk-WU77YPWF.js" />
-    <link rel="modulepreload" href="./chunks/GLTFLoader-ZOFRLLHR.js" />
-    <link rel="modulepreload" href="./chunks/meshopt_decoder.module-AZS54MZQ.js" />
   </head>
   <body>
     <main id="stage"></main>
     <div id="ui"></div>
-    <div id="loading"><div class="ld-card"><h1 class="ld-title">Silver Tongue</h1><p class="ld-item">Loading…</p></div></div>
+    <div id="loading"><div class="ld-card"><h1 class="ld-title">Silver Tongue</h1><div class="ld-bar"><div class="ld-fill"></div></div><p class="ld-line"><b class="ld-pct">0%</b><span class="ld-bytes">0.0 / 1.0 MB</span></p><p class="ld-item">Loading the game…</p><p class="ld-slow" hidden></p><button class="ld-retry st-btn primary" type="button"></button><p class="ld-err"></p><span class="build-version" aria-hidden="true">e8dca2a · 2026-09-27 20:00 UTC</span></div></div>
     <div id="start"></div>
-    <script type="module" src="./main.js"></script>
+    <!-- build.mjs: the preloader (src/preload.js), which adds the module script; --dev: the module script -->
+    <script type="application/json" id="ld-text">{"files":[["./main.js",340072],["./chunks/chunk-V4APRUIF.js",6609],["./chunks/chunk-W3THLNHZ.js",594356],["./chunks/chunk-LLOFYLPJ.js",42661],["./chunks/GLTFLoader-R6HAXP2O.js",44047],["./chunks/meshopt_decoder.module-AZS54MZQ.js",26491]],"entry":"./main.js","s":{"en":{"loading":"Loading the game…","slow":"Slow connection, still loading…","failed":"Couldn't load the game. Check your connection.","file":"The game can't load from a file. Serve this folder from a web server and reload.","retry":"Retry","reload":"Reload"},"bn":{"loading":"গেম লোড হচ্ছে…","slow":"সংযোগ ধীর, এখনও লোড হচ্ছে…","failed":"গেমটি লোড করা যায়নি। আপনার ইন্টারনেট সংযোগ দেখুন।","file":"ফাইল থেকে গেমটি চলে না। এই ফোল্ডারটি একটি ওয়েব সার্ভার থেকে চালিয়ে আবার লোড করুন।","retry":"আবার চেষ্টা করুন","reload":"রিলোড করুন"},"zh":{"loading":"游戏加载中…","slow":"网络较慢，仍在加载…","failed":"游戏无法加载。请检查网络连接。","file":"游戏不能直接从文件打开。请用网页服务器提供此文件夹，然后重新加载。","retry":"重试","reload":"重新加载"}},"fallback":"en","key":"silver-tongue:settings","slowMs":15000,"failMs":45000,"moduleMs":60000}</script>
+    <script>(function(){function _(r){return(r/1048576).toFixed(1)}function N(r,n,o){for(var c=0,l=0,i=0;i<r.length;i++){var s=r[i][0],a=n[s]||0;c+=a,l+=o[s]?a:Math.max(r[i][1],a)}return{loaded:c,total:l,fraction:l>0?c/l:1}}function E(r){var n=this,o,c,l=function(a){n.slow!==a&&(n.slow=a,r.onSlow(a))},i=function(){clearTimeout(o),clearTimeout(c)},s=function(){i(),o=setTimeout(function(){l(!0)},r.slowMs),c=setTimeout(function(){n.stop(),r.onFail()},r.failMs)};n.slow=n.on=!1,n.start=function(){n.on=!0,s()},n.poke=function(){n.on&&(l(!1),s())},n.stop=function(){n.on=!1,i(),l(!1)}}function R(r,n,o){return n&&r<=o?"retry":"reload"}function j(r,n,o,c,l){for(var i=/[?&]ui=([^&]+)/.exec(n),s=/"learner":"([^"]+)"/.exec(o),a=[i&&i[1],s&&s[1]].concat(c),v=0;v<a.length;v++){var u=String(a[v]||"").toLowerCase();if(r[u]||r[u=u.split("-")[0]])return u}return l}function q(r,n,o){o=o||JSON.parse(n.querySelector("#ld-text").textContent);var c=0,l=null;function i(t){if(t){if(!t.live)return;t.phase=1,t.o.failMs=o.moduleMs,t.dog.poke()}var e=n.createElement("script");e.type="module",e.src=o.entry,e.onerror=function(){h(o.entry+" didn't start",t)},n.body.appendChild(e)}if(!r.fetch||!r.ReadableStream)return i();var s=r.navigator,a=r.location,v="";try{v=r.localStorage.getItem(o.key)}catch(t){}var u=o.s[j(o.s,a.search,v,s.languages||[s.language],o.fallback)],x=n.querySelector("#loading"),d=function(t){return x.querySelector(".ld-"+t)},B=d("fill"),T=d("pct"),A=d("bytes"),S=d("item"),b=d("slow"),k=d("retry"),F=d("err");b.textContent=u.slow;function C(t){var e=N(o.files,t.got,t.done),f=e.fraction;B.style.width=f*100+"%",T.textContent=Math.floor(f*100)+"%",A.textContent=_(e.loaded)+" / "+_(e.total)+" MB"}function h(t,e){if(e=e||l,!(!e||e!==l||!e.live||r.__stBooted)){e.live=!1,e.dog.stop(),e.ctrl&&e.ctrl.abort();var f=R(++c,e.phase<1,1)==="retry";x.className="error",S.textContent=a.protocol==="file:"?u.file:u.failed,k.textContent=f?u.retry:u.reload,F.textContent=t&&t.message||t||"",e.go=k.onclick=function(){e.go=null,f?w():a.reload()}}}function L(t,e){return r.fetch(t,{signal:e.ctrl&&e.ctrl.signal}).then(function(f){if(!f.ok)throw t+": "+f.status;var m=function(y){e.live&&(e.got[t]=(e.got[t]||0)+y,e.dog.poke(),C(e))},p=f.body.getReader(),g=function(){return p.read().then(function(y){if(!y.done)return m(y.value.length),g()})};return g()})}function w(){var t={live:!0,phase:0,got:{},done:{},ctrl:r.AbortController?new r.AbortController:null},e=o.files.length;x.className="",S.textContent=u.loading,b.hidden=!0,t.o={slowMs:o.slowMs,failMs:o.failMs,onSlow:function(p){r.__stBooted?t.dog.stop():t.live&&(b.hidden=!p)},onFail:function(){h(t.phase?o.entry+" didn't start":"stalled",t)}},t.dog=new E(t.o),l=t,t.dog.start(),C(t);for(var f=function(p){L(p[0],t).then(function(){t.done[p[0]]=!0,C(t),--e||i(t)},function(g){h(g,t)})},m=0;m<o.files.length;m++)f(o.files[m])}w();var M=function(t,e){r.addEventListener(t,e)};M("error",function(t){h(t.error||t.message)}),M("unhandledrejection",function(t){h(t.reason)}),M("online",function(){l.go&&!r.__stBooted&&l.go()})}q(window,document);})();</script>
   </body>
 </html>
