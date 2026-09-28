@@ -261,6 +261,9 @@ def arm(fig, body, sleeve_colour, skin, sleeve="long", cuff=None, guard=None, qu
                 u = us * i / (quilt * 2)
                 f = 1.1 if i % 2 else .98
                 rings.append((u, r(u) * f, r(u) * f))
+        elif fig.name == "player":
+            for u in (L * .34, L * .47, L * .60):
+                rings.append((u, r(u), r(u)))
         else:
             rings.append((us * .5, r(us * .5), r(us * .5)))
         end = r(us) * (1.06 if sleeve in ("short",) else 1.0)
@@ -268,10 +271,10 @@ def arm(fig, body, sleeve_colour, skin, sleeve="long", cuff=None, guard=None, qu
         if sleeve == "rolled":
             rings[-1] = (us - .045 * body.k, end, end)
             rings += [(us - .04 * body.k, end * 1.2, end * 1.2), (us, end * 1.2, end * 1.2)]
-        parts.append(B.loft(rings, segments=10, material=sleeve_colour, rot=rot, loc=loc, name="sleeve"))
+        parts.append(B.loft(rings, segments=16 if fig.name == "player" else 10, material=sleeve_colour, rot=rot, loc=loc, name="sleeve"))
         if cuff and sleeve == "long":
             parts.append(B.loft([(us - .045 * body.k, r(us) * 1.08, r(us) * 1.08), (us + .004, r(us) * 1.08, r(us) * 1.08)],
-                                segments=10, material=cuff, rot=rot, loc=loc, name="cuff"))
+                                segments=16 if fig.name == "player" else 10, material=cuff, rot=rot, loc=loc, name="cuff"))
     eu = elbow_u(body, sleeve)
     if us < L:
         a = max(us - .04 * body.k, 0)
@@ -290,9 +293,9 @@ def arm(fig, body, sleeve_colour, skin, sleeve="long", cuff=None, guard=None, qu
     h0 = L - .01 * body.k
     hand = [(h0, ht * .75, hw * .75), (h0 + hl * .3, ht, hw), (h0 + hl * .7, ht * .95, hw * .95),
             (h0 + hl * .92, ht * .7, hw * .7), (h0 + hl, 0, 0)]
-    parts.append(B.loft(hand, segments=8, material=skin, rot=rot, loc=loc, name="hand_mitten"))
+    parts.append(B.loft(hand, segments=12 if fig.name == "player" else 8, material=skin, rot=rot, loc=loc, name="hand_mitten"))
     base = loc + Vector((h0 + hl * .32, -hw * .55, 0))
-    parts.append(B.capsule(ht * .58, hl * .45, segments=6, cap_rings=2, material=skin,
+    parts.append(B.capsule(ht * .58, hl * .45, segments=10 if fig.name == "player" else 6, cap_rings=2, material=skin,
                            loc=base, rot=B.aim((.55, -1, .15)), name="hand_thumb"))
     fig.elbow_u = eu
     for p in parts:
@@ -858,7 +861,8 @@ def outfit_hoodie(fig, body, colour, string="cloth_white"):
     for sx in (1, -1):
         a = body.surface(FRONT + sx * .22, body.torso_top - .05 * k, .01 * k)
         b = body.surface(FRONT + sx * .2, body.ctrl[4][0] - .02 * k, .012 * k)
-        parts.append(B.tube([a, b], .009 * k, segments=4, material=string, name="hoodie_string"))
+        parts.append(B.tube([a, b], (.0055 if fig.name == "player" else .009) * k,
+                            segments=8 if fig.name == "player" else 4, material=string, name="hoodie_string"))
     fig.add_all(parts, "outfit")
 
 
@@ -1065,6 +1069,9 @@ def make_human(spec, torso_override=None, out_name=None):
         if params.get("colour") == spec["torso"] and torso_override:
             params["colour"] = torso_override
         OUTFITS[key](fig, body, **params)
+    if name == "player":
+        from sets.player_polish import polish
+        polish(fig, body, _hair_shell)
     assert_faceless(fig)
     angles = rest_arms(fig, body)                   # relaxed-A bind pose
     labels = human_labels(fig, body, angles)
@@ -1101,6 +1108,9 @@ def make_human(spec, torso_override=None, out_name=None):
     J = {n: v * sc - Vector((0, 0, feet)) for n, (v, _) in joints.items()}
     rigobj = rig.build_armature(name + "_rig", human_bone_specs(J, spec["height"] / 1.7), rig.HUMAN_SKELETON)
     counts = rig.bind_rigid(obj, rigobj, labels)
+    if name == "player":
+        from sets.player_polish import soften_joints
+        soften_joints(obj, J)
     front_ry = max(body.profile(z)[1] for z in (body.ctrl[3][0], body.ctrl[4][0])) * sc
     clips, motion = rig.bake_human(rigobj, spec["height"], front_ry)
     stride, slip = rig.measure_stride(rigobj, motion.sk, motion)
@@ -1116,7 +1126,8 @@ def make_human(spec, torso_override=None, out_name=None):
 def check_human(obj, height, name):
     tris = B.tri_count(obj)
     lo, hi = B.bbox(obj)
-    assert HUMAN_TRIS[0] <= tris <= HUMAN_TRIS[1], "%s tris %d outside %s" % (name, tris, HUMAN_TRIS)
+    budget = (HUMAN_TRIS[0], 6000) if name == "player" else HUMAN_TRIS
+    assert budget[0] <= tris <= budget[1], "%s tris %d outside %s" % (name, tris, budget)
     assert abs(lo.z) < 1e-4, "%s feet not at z=0" % name
     assert abs(lo.x + hi.x) < .01, "%s not centred in x" % name
     return tris, hi.z

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Verify the rigged character GLBs (run after sets/characters.py).
 
-    blender -b --python tools/blender/verify_rig.py [-- --extra OUT_DIR]
+    blender -b --python tools/blender/verify_rig.py [-- --extra OUT_DIR | --check-only]
 
 For every character in assets/characters/manifest.json that has a ``rig``
 block (15 humans + 3 pets) it checks, from the raw GLB JSON/binary AND a
@@ -145,10 +145,17 @@ def check_blender(name, path, entry, human):
     want = sorted(rig.HUMAN_BONE_NAMES if human else rig.PET_BONE_NAMES)
     assert names == want, "%s: bones %s" % (name, names)
     groups = {g.name for g in meshes[0].vertex_groups}
-    # rigid: every vertex exactly one group, weight 1
+    # NPCs remain rigid. The hero blends only adjacent knee/elbow bones.
+    allowed_pairs = {frozenset((s + a, s + b)) for s in ("Left", "Right")
+                     for a, b in (("UpLeg", "Leg"), ("Arm", "ForeArm"))}
     for v in meshes[0].data.vertices:
-        ws = [g.weight for g in v.groups if g.weight > 1e-6]
-        assert len(ws) == 1 and abs(ws[0] - 1) < 1e-3, "%s: vertex %d weights %s" % (name, v.index, ws)
+        influences = [g for g in v.groups if g.weight > 1e-6]
+        ws = [g.weight for g in influences]
+        assert 1 <= len(ws) <= (2 if name == "player" else 1) and abs(sum(ws) - 1) < 1e-3, (
+            "%s: vertex %d weights %s" % (name, v.index, ws))
+        if len(ws) == 2:
+            pair = frozenset(meshes[0].vertex_groups[g.group].name for g in influences)
+            assert pair in allowed_pairs, "%s: unexpected blended bones %s" % (name, pair)
     stride = None
     if human:
         ad = arm.animation_data
@@ -196,6 +203,8 @@ def main():
                 stride, e["rig"]["stride_m"], frames["RightHandGrip"], frames["HeadTop"])) if human else ""))
     assert len(humans) == 15, len(humans)
     print("VERIFY_RIG OK %d characters (15 humans, 3 pets)" % len(rigged))
+    if "--check-only" in argv:
+        return
     kw = dict(cols=8, true_scale=True, files=humans, resolution=(2400, 1200))
     sheet.render_sheet(DIR, os.path.join(DIR, "sheet_pose.png"), **kw)
     sheet.render_sheet(DIR, os.path.join(DIR, "sheet_walk.png"), pose=("walk", 12), **kw)

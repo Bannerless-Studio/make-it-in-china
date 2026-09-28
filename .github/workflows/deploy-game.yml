@@ -23,6 +23,10 @@ jobs:
     steps:
       - uses: actions/checkout@v5
         with:
+          path: art
+
+      - uses: actions/checkout@v5
+        with:
           repository: Fiazul/silver-tongue
           ref: world3d-0.14
           path: silver-tongue
@@ -32,6 +36,9 @@ jobs:
           node-version: 22
           cache: npm
           cache-dependency-path: silver-tongue/package-lock.json
+
+      - name: Apply polished player asset
+        run: node art/tools/sync-player.mjs silver-tongue/packages/world3d/assets
 
       - name: Build
         working-directory: silver-tongue

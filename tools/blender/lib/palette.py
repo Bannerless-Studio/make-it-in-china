@@ -29,6 +29,12 @@ def hex_to_linear(hex_str, alpha=1.0):
 
 # name: (sRGB hex, description). Order = documentation order.
 SPEC = {
+    "mc_fleece": ("#77868B", "player slate fleece"),
+    "mc_rib": ("#68767B", "player tonal knitted cuffs"),
+    "mc_denim": ("#354B60", "player washed indigo denim"),
+    "mc_pack": ("#303F4C", "player navy canvas backpack"),
+    "mc_ivory": ("#E5DFD1", "player warm ivory rubber and cotton"),
+    "mc_hair": ("#302B29", "player soft espresso hair"),
     # --- skin -------------------------------------------------------------
     "skin_light":   ("#F2CBA6", "light skin tone"),
     "skin_mid":     ("#DDA67C", "medium skin tone (default)"),

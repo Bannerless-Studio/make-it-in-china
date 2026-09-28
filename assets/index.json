@@ -4,7 +4,7 @@
  "sets": {
   "characters": {
    "count": 29,
-   "tris": 33954
+   "tris": 37872
   },
   "buildings": {
    "count": 17,
@@ -30,11 +30,11 @@
    "name": "player",
    "kind": "human",
    "file": "player.glb",
-   "tris": 1950,
+   "tris": 5868,
    "size_m": [
-    0.619,
-    1.713,
-    0.442
+    0.709,
+    1.718,
+    0.441
    ],
    "origin": "feet",
    "anchors": {
@@ -44,9 +44,9 @@
      0.0
     ],
     "top": [
-     0.0,
-     1.7132,
-     0.0
+     0,
+     1.7176,
+     0
     ]
    },
    "rig": {
@@ -88,8 +88,8 @@
      "Right": 15.0
     },
     "shoulder_out_m": {
-     "Left": 0.0,
-     "Right": 0.0
+     "Left": 0.045,
+     "Right": 0.045
     }
    },
    "frame": "gltf"

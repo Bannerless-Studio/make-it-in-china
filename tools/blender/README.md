@@ -16,6 +16,10 @@ blender -b --python-exit-code 1 --python tools/blender/mockup.py
 # -> assets/characters/*.glb, manifest.json and sheet.png (idempotent).
 blender -b --python tools/blender/sets/characters.py
 
+# Player polish only: keeps other assets untouched; verifies the exported rig,
+# updates the character manifest + asset index, and renders a review image.
+blender -b --python-exit-code 1 --python tools/blender/build_player.py
+
 # Contact sheet for any GLB dir (thin wrapper over lib/sheet.py).
 blender -b --python tools/blender/render_sheet.py                    # assets/placeholders, fit mode
 blender -b --python tools/blender/render_sheet.py -- --dir assets/characters --fit --cols 7
@@ -144,6 +148,13 @@ tri budgets and heights, print counts, render the sheet and look at it.
   distinct (headwear shape, torso colour) pairs, tri budgets (humans
   800-2500, pets <= 1200, props <= 400), feet at z=0, centred, measured
   bare-head top == spec height (landlord 1.62, stocky).
+* The player uses `sets/player_polish.py` before the common rig stage: smoother
+  head/hair, tonal fleece, fitted denim, layered sneakers and a rounded pack.
+  Player budget: 6,000 triangles (currently 5,868), no textures. Other humans
+  retain their existing budgets. Six player-only palette materials distinguish
+  cloth, rubber and hair through standard glTF roughness values.
+  Knee and elbow support rings blend two adjacent bones; the verifier checks
+  normalized weights and restricts blending to those four joint pairs.
 * Recolours of customer_a: customer_a_khaki / _green / _blue.
 * Held props (origin = grip unless noted): chef_hat (base), ladle, clipboard,
   delivery_bag, hanging_scale, key_ring, shopping_trolley, smartphone,
